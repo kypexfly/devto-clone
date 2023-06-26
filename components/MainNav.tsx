@@ -1,14 +1,15 @@
 import Link from "next/link"
 
+import { CreatePost } from "./CreatePost"
 import { Icons } from "./Icons"
 import { SideNav } from "./SideNav"
 import { ThemeToggle } from "./ThemeToggle"
-import { Button } from "./ui/Button"
+import { Button, buttonVariants } from "./ui/Button"
 import { Sheet, SheetContent, SheetTrigger } from "./ui/Sheet"
 
 export function MainNav() {
   return (
-    <header className="shadow-sm dark:shadow-white/10 bg-background top-0 sticky">
+    <header className="border-b bg-background top-0 sticky z-10">
       <div className="container flex items-center justify-between py-4">
         {/* SideNav when mobile */}
         <Sheet>
@@ -28,7 +29,13 @@ export function MainNav() {
         <Link className="font-bold" href="/">
           DEV Community
         </Link>
-        <ThemeToggle />
+        <div className="flex items-center space-x-2">
+          <Link href="/login" className={buttonVariants({ variant: "ghost" })}>
+            Log in
+          </Link>
+          <CreatePost />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   )
