@@ -7,8 +7,6 @@ import { Inter } from "next/font/google"
 
 import { GlobalProviders } from "@/components/GlobalProviders"
 import { MainNav } from "@/components/MainNav"
-import { SideAditional } from "@/components/SideAditional"
-import { SideNav } from "@/components/SideNav"
 
 export const metadata: Metadata = {
   title: {
@@ -42,11 +40,7 @@ export default function RootLayout({
         <GlobalProviders>
           <MainNav />
           {authModal}
-          <div className="container py-8 grid grid-cols-1 md:grid-cols-8 gap-6 grow">
-            <SideNav className="hidden md:block md:col-span-2" />
-            <main className="col-span-6 lg:col-span-4">{children}</main>
-            <SideAditional className="hidden lg:flex flex-col gap-3 lg:col-span-2" />
-          </div>
+          <div className="container py-8 grow">{children}</div>
         </GlobalProviders>
       </body>
     </html>
