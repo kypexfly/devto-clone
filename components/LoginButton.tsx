@@ -40,12 +40,8 @@ export default function LoginButton({
   const ProviderIcon = getIconComponent(provider)
 
   return (
-    <Button disabled={isLoading} onClick={login} size="lg" {...props}>
-      {isLoading ? (
-        <Icons.loader className="animate-spin mr-2 h-4 w-4" />
-      ) : (
-        <ProviderIcon className="mr-2 h-4 w-4" />
-      )}
+    <Button isLoading={isLoading} onClick={login} size="lg" {...props}>
+      <ProviderIcon className="mr-2 h-4 w-4" />
       {children}
     </Button>
   )

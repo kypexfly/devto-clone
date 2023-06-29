@@ -1,8 +1,10 @@
 import {
   Cog,
+  Heart,
   Loader2,
   LucideProps,
   Menu,
+  MessageCircle,
   Moon,
   SunMedium,
   Twitter,
@@ -38,4 +40,7 @@ export const Icons = {
   loader: Loader2,
   settings: Cog,
   close: X,
+  user: User,
+  heart: Heart,
+  comment: MessageCircle,
 }

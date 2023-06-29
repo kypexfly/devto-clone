@@ -5,6 +5,7 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 import { Inter } from "next/font/google"
 
+import { Toaster } from "@/components/ui/Toaster"
 import { GlobalProviders } from "@/components/GlobalProviders"
 import { MainNav } from "@/components/MainNav"
 
@@ -39,6 +40,7 @@ export default function RootLayout({
       >
         <GlobalProviders>
           <MainNav />
+          <Toaster />
           {authModal}
           <div className="container py-8 grow">{children}</div>
         </GlobalProviders>

@@ -1,6 +1,8 @@
 import Link from "next/link"
+import { Suspense } from "react"
 
-import PostFeed from "@/components/PostFeed"
+import { GeneralFeed } from "@/components/homepage/GeneralFeed"
+import { PostFeedSkeleton } from "@/components/skeleton/PostFeedSkeleton"
 
 export default function Home() {
   return (
@@ -8,19 +10,17 @@ export default function Home() {
       <header>
         <nav>
           <ul className="flex flex-wrap items-center space-x-4 pb-4 px-2">
-            <li className="font-bold">
-              <Link href="#">Latest</Link>
-            </li>
-            <li>
-              <Link href="#">Relevant</Link>
-            </li>
-            <li>
-              <Link href="#">Top</Link>
-            </li>
+            {["Relevant", "Latest", "Top"].map((item, index) => (
+              <li className="font-bold" key={index}>
+                <Link href="#">{item}</Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </header>
-      <PostFeed />
+      <Suspense fallback={<PostFeedSkeleton />}>
+        <GeneralFeed />
+      </Suspense>
     </>
   )
 }

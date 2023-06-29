@@ -6,7 +6,9 @@ export async function middleware(req: NextRequest) {
   const isAuth = !!token
 
   const isAuthPage = req.nextUrl.pathname.startsWith("/login")
-  const isProtected = req.nextUrl.pathname.startsWith("/new, /settings")
+  const isProtected =
+    req.nextUrl.pathname.startsWith("/new") ||
+    req.nextUrl.pathname.startsWith("/settings")
 
   if (isAuthPage) {
     if (isAuth) return NextResponse.redirect(new URL("/", req.url))

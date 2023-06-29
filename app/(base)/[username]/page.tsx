@@ -16,13 +16,16 @@ export default async function UserPage({ params }: UserPageProps) {
     where: {
       username,
     },
+    include: {
+      posts: true,
+    },
   })
 
   if (!user) return notFound()
 
   return (
     <div>
-      {user.username} Exists!
+      <pre>{JSON.stringify(user, null, 2)}</pre>
       <div>
         <UserNav user={user} />
       </div>
