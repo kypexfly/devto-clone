@@ -35,9 +35,14 @@ export default async function UserPage({ params }: UserPageProps) {
 
   return (
     <div>
+      <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3 pt-4 px-2">
+        All posts by {user.username}
+      </h1>
       <ul>
         {user.posts.map((post, index) => (
-          <Post commentAmt={post.comments.length} post={post} key={index} />
+          <li key={index}>
+            <Post commentAmt={post.comments.length} post={post} />
+          </li>
         ))}
       </ul>
     </div>

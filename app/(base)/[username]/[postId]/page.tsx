@@ -15,6 +15,7 @@ import { notFound } from "next/navigation"
 
 import { db } from "@/lib/db"
 import CustomMDXRemote from "@/components/CustomMDXRemote"
+import { PostAuthor } from "@/components/PostAuthor"
 
 interface PostPageProps {
   params: {
@@ -34,6 +35,7 @@ export default async function PostPage({ params }: PostPageProps) {
     include: {
       tags: true,
       user: true,
+      comments: true,
     },
   })
 
@@ -74,14 +76,30 @@ export default async function PostPage({ params }: PostPageProps) {
             ))}
           </ul>
 
-          <Link href={`/${post.user.username}`}>
-            <UserAvatar user={post.user} className="mt-4" />
-          </Link>
+          <PostAuthor
+            user={post.user}
+            createdAt={post.createdAt}
+            className="py-4"
+          />
 
           <div className="mdx text-lg">
             <CustomMDXRemote source={post.content} />
           </div>
         </div>
+        <section id="comments" className="p-4 md:p-12 border-t">
+          <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+            {`Comments (${post.comments.length})`}
+          </h2>
+
+          <ul>
+            {post.comments.map((c, index) => (
+              <li>
+                <p>@{`${c.userId} / ${c.createdAt.toDateString()}`}</p>
+                <p>{c.content}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
       <div className="hidden lg:flex flex-col lg:col-span-3 gap-3">
         <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full">
