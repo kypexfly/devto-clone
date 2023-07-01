@@ -1,4 +1,5 @@
 import {
+  BookmarkIcon,
   Cog,
   Heart,
   Loader2,
@@ -43,4 +44,5 @@ export const Icons = {
   user: User,
   heart: Heart,
   comment: MessageCircle,
+  bookmark: BookmarkIcon,
 }

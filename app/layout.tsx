@@ -7,7 +7,7 @@ import { Inter } from "next/font/google"
 
 import { Toaster } from "@/components/ui/Toaster"
 import { GlobalProviders } from "@/components/GlobalProviders"
-import { MainNav } from "@/components/MainNav"
+import { SiteNavbar } from "@/components/SiteNavbar"
 
 export const metadata: Metadata = {
   title: {
@@ -39,12 +39,12 @@ export default function RootLayout({
         className={`${inter.className} antialiased flex flex-col min-h-screen bg-zinc-100 dark:bg-background`}
       >
         <GlobalProviders>
-          <MainNav />
-          <Toaster />
+          <SiteNavbar />
           {authModal}
           <div className="container px-0 py-0 md:px-3 md:py-8 grow">
             {children}
           </div>
+          <Toaster />
         </GlobalProviders>
       </body>
     </html>

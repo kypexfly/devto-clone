@@ -3,9 +3,11 @@ import Link from "next/link"
 
 import { PostPayload } from "@/types/post"
 
+import { Icons } from "./Icons"
+import { PostAuthor } from "./PostAuthor"
 import Tag from "./Tag"
 import { AspectRatio } from "./ui/aspect-ratio"
-import { buttonVariants } from "./ui/Button"
+import { Button, buttonVariants } from "./ui/Button"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/Card"
 import { UserAvatar } from "./UserAvatar"
 
@@ -42,17 +44,7 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
           </Link>
         </div>
       )}
-      <div className="flex flex-row items-center gap-2 p-6 pb-0">
-        <Link href={`/${username}`}>
-          <UserAvatar user={user} />
-        </Link>
-        <div>
-          <Link href={`/${username}`}>{username}</Link> <br />
-          <small>
-            <time>{new Date(createdAt).toDateString()}</time>
-          </small>
-        </div>
-      </div>
+      <PostAuthor user={user} createdAt={createdAt} className="p-6 pb-0" />
       <CardHeader className="pl-4 md:pl-16 py-2">
         <CardTitle className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl">
           <Link href={`/${username}/${id}`}>{title}</Link>
@@ -67,19 +59,29 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
           ))}
         </ul>
 
-        <div className="pt-3">
-          <Link
-            className={buttonVariants({ variant: "ghost" })}
-            href={`${username}/${id}`}
+        <div className="flex justify-between pt-3">
+          <div>
+            <Link
+              className={buttonVariants({ variant: "ghost" })}
+              href={`${username}/${id}`}
+            >
+              0 reaction
+            </Link>
+            <Link
+              className={buttonVariants({ variant: "ghost" })}
+              href={`/${username}/${id}#comments`}
+            >
+              {commentAmt || 0} comments
+            </Link>
+          </div>
+
+          <Button
+            variant="ghost"
+            aria-label={`Bookmark "${post.title}"`}
+            title={`Bookmark "${post.title}"`}
           >
-            x reaction
-          </Link>
-          <Link
-            className={buttonVariants({ variant: "ghost" })}
-            href={`/${username}/${id}#comments`}
-          >
-            {commentAmt || 0} comments
-          </Link>
+            <Icons.bookmark />
+          </Button>
         </div>
       </CardContent>
     </Card>
