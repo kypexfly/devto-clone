@@ -79,13 +79,16 @@ export default async function PostPage({ params }: PostPageProps) {
           </Link>
 
           <div className="mdx text-lg">
-            <CustomMDXRemote source={post.content} />L
+            <CustomMDXRemote source={post.content} />
           </div>
         </div>
       </div>
-      <div className="hidden lg:block lg:col-span-3">
+      <div className="hidden lg:flex flex-col lg:col-span-3 gap-3">
         <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full">
-          <CardHeader>About Author</CardHeader>
+          <CardHeader>User Card</CardHeader>
+        </Card>
+        <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full">
+          <CardHeader>More from {post.user.username}</CardHeader>
         </Card>
       </div>
     </div>

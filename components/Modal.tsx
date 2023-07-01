@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
+import { useLockedBody } from "usehooks-ts"
 
 interface ModalProps {
   children: React.ReactNode
@@ -9,10 +10,12 @@ interface ModalProps {
 export default function Modal({ children }: ModalProps) {
   const overlay = useRef<HTMLDivElement>(null)
   const wrapper = useRef<HTMLDivElement>(null)
+  const [_, setLocked] = useLockedBody(true, "root")
   const router = useRouter()
 
   const onDismiss = useCallback(() => {
     router.back()
+    setLocked(false)
   }, [router])
 
   const onClick = useCallback(
@@ -39,7 +42,7 @@ export default function Modal({ children }: ModalProps) {
   return (
     <div
       ref={overlay}
-      className="fixed inset-0 z-50 mx-auto bg-black/25"
+      className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
       onClick={onClick}
     >
       <div

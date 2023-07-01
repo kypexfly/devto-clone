@@ -37,6 +37,8 @@ export async function MainNav() {
           DEV Community
         </Link>
         <div className="flex items-center space-x-2">
+          <ThemeToggle />
+
           {session ? (
             <>
               <Link className={buttonVariants()} href="/new">
@@ -49,8 +51,6 @@ export async function MainNav() {
               Log in
             </Link>
           )}
-
-          <ThemeToggle />
         </div>
       </div>
     </header>

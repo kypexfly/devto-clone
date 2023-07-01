@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 
 import { db } from "@/lib/db"
-import { UserNav } from "@/components/UserNav"
+import { Post } from "@/components/Post"
 
 interface UserPageProps {
   params: {
@@ -17,7 +17,17 @@ export default async function UserPage({ params }: UserPageProps) {
       username,
     },
     include: {
-      posts: true,
+      posts: {
+        select: {
+          id: true,
+          createdAt: true,
+          title: true,
+          tags: true,
+          user: true,
+          comments: true,
+        },
+        take: 5,
+      },
     },
   })
 
@@ -25,10 +35,11 @@ export default async function UserPage({ params }: UserPageProps) {
 
   return (
     <div>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
-      <div>
-        <UserNav user={user} />
-      </div>
+      <ul>
+        {user.posts.map((post, index) => (
+          <Post commentAmt={post.comments.length} post={post} key={index} />
+        ))}
+      </ul>
     </div>
   )
 }
