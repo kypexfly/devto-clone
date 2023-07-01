@@ -42,7 +42,7 @@ export default async function PostPage({ params }: PostPageProps) {
   if (!post) return notFound()
 
   return (
-    <div className="grid grid-cols-12 gap-3">
+    <div className="grid grid-cols-12 gap-3 grow">
       <aside className="hidden md:block md:col-span-1 ">
         <div className="sticky top-20 flex flex-col gap-4">
           <Button className="p-2 md:py-6" variant="ghost">

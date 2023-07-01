@@ -8,7 +8,7 @@ import { buttonVariants } from "./ui/Button"
 
 const sideOptions = [
   {
-    url: "",
+    url: "/",
     label: "Home",
   },
   {
@@ -24,7 +24,7 @@ const sideOptions = [
     label: "Videos",
   },
   {
-    url: "#",
+    url: "/t",
     label: "Tags",
   },
 ]

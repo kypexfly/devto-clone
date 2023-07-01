@@ -41,7 +41,7 @@ export default function RootLayout({
         <GlobalProviders>
           <SiteNavbar />
           {authModal}
-          <div className="container px-0 py-0 md:px-3 md:py-8 grow">
+          <div className="container px-0 py-0 md:px-3 md:py-8 grow flex flex-col">
             {children}
           </div>
           <Toaster />
