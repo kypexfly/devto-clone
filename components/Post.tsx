@@ -20,7 +20,7 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
   const { username } = user
 
   return (
-    <Card className="shadow-none mb-4 bg-white dark:bg-zinc-900 border-0 max-w-3xl overflow-hidden">
+    <Card className="shadow-none mb-2 bg-white dark:bg-zinc-900 border-0 max-w-3xl overflow-hidden rounded-none md:rounded-xl">
       <Link
         href={`/${username}/${id}`}
         className="absolute opacity-0 inset-0 pointer-events-none"
@@ -53,12 +53,12 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
           </small>
         </div>
       </div>
-      <CardHeader className="pl-16 py-2">
+      <CardHeader className="pl-4 md:pl-16 py-2">
         <CardTitle className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl">
           <Link href={`/${username}/${id}`}>{title}</Link>
         </CardTitle>
       </CardHeader>
-      <CardContent className="pl-16">
+      <CardContent className="pl-4 md:pl-16">
         <ul className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <Link key={tag.name} href={`/t/${tag.name}`}>

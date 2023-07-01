@@ -42,7 +42,9 @@ export default function RootLayout({
           <MainNav />
           <Toaster />
           {authModal}
-          <div className="container py-8 grow">{children}</div>
+          <div className="container px-0 py-0 md:px-3 md:py-8 grow">
+            {children}
+          </div>
         </GlobalProviders>
       </body>
     </html>
