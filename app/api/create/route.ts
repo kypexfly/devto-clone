@@ -20,7 +20,7 @@ export async function POST(req: Request) {
         title,
         content,
         tags: {
-          create: tags.map((tagName) => ({ name: tagName })),
+          create: tags.map((tagName) => ({ name: tagName.trim() })),
         },
         userId: session.user.id,
       },
