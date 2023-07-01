@@ -41,13 +41,13 @@ export async function MainNav() {
 
           {session ? (
             <>
-              <Link className={buttonVariants()} href="/new">
+              <Link className={buttonVariants({ size: "sm" })} href="/new">
                 Create Post
               </Link>
               <UserNav user={session.user} />
             </>
           ) : (
-            <Link href="/login" className={buttonVariants()}>
+            <Link href="/login" className={buttonVariants({ size: "sm" })}>
               Log in
             </Link>
           )}

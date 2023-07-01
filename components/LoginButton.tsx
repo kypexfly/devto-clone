@@ -41,7 +41,7 @@ export default function LoginButton({
 
   return (
     <Button isLoading={isLoading} onClick={login} size="lg" {...props}>
-      <ProviderIcon className="mr-2 h-4 w-4" />
+      {!isLoading && <ProviderIcon className="mr-2 h-4 w-4" />}
       {children}
     </Button>
   )

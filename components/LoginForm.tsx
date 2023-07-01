@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils"
+
 import LoginButton from "./LoginButton"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/Card"
 
@@ -5,7 +7,7 @@ interface UserAuthForm extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function LoginForm({ className, ...props }: UserAuthForm) {
   return (
-    <Card className="mx-auto max-w-[350px] w-full h-full">
+    <Card className={cn("border-0 shadow-none w-full h-full", className)}>
       <CardHeader>
         <CardTitle>Log In</CardTitle>
       </CardHeader>
