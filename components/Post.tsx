@@ -76,7 +76,7 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
           </Link>
           <Link
             className={buttonVariants({ variant: "ghost" })}
-            href={`$${username}/${id}#comments`}
+            href={`/${username}/${id}#comments`}
           >
             {commentAmt || 0} comments
           </Link>
