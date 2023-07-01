@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
 import axios, { AxiosError } from "axios"
@@ -12,7 +12,14 @@ import { Button } from "./ui/Button"
 import { Input } from "./ui/Input"
 
 export function UsernameForm() {
+  const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
+
+  useEffect(() => {
+    if (inputRef) {
+      inputRef?.current?.focus()
+    }
+  }, [])
 
   const { mutate: updateUsername, isLoading } = useMutation({
     mutationFn: async (name: { name: string }) => {
@@ -57,6 +64,7 @@ export function UsernameForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       <Input
+        ref={inputRef}
         name="name"
         type="text"
         autoComplete="new-password"
