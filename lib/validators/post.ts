@@ -2,7 +2,7 @@ import { z } from "zod"
 
 export const PostValidator = z.object({
   title: z.string().min(10).max(80),
-  tags: z.array(z.string()).min(1),
+  tags: z.array(z.string()).min(1).max(4),
   content: z.any(),
 })
 

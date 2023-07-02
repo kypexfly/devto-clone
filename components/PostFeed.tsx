@@ -77,15 +77,11 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
         )
       })}
 
-      {/* Explan this to me*/}
-
-      {isFetching && !isFetchingNextPage ? (
+      {isFetchingNextPage && (
         <li>
           <PostSkeleton />
           <PostSkeleton />
         </li>
-      ) : (
-        !hasNextPage
       )}
     </ul>
   )

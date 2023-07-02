@@ -1,0 +1,31 @@
+.rti--container {
+    @apply flex min-h-[2.25rem] w-full rounded-md !border-0 !bg-transparent px-3 py-1 text-sm !shadow-none transition-colors file:!border-0 file:!bg-transparent file:text-sm file:font-medium placeholder:!text-muted-foreground focus-visible:!outline-none focus-visible:!ring-1 focus-visible:!ring-ring disabled:cursor-not-allowed disabled:opacity-50
+}
+
+.rti--tag {
+    @apply !p-2 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 !bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80
+}
+
+.rti--input {
+    @apply bg-transparent
+}
+
+.w-md-editor, .wmde-markdown-var, .wmde-markdown {
+    @apply !bg-transparent !border-0 !shadow-none
+}
+
+.w-md-editor-toolbar{ 
+    @apply dark:!bg-black !border-0
+}
+
+.w-md-editor-toolbar li > button {
+    @apply p-0 !h-auto
+}
+
+.w-md-editor-fullscreen {
+    @apply !bg-white dark:!bg-zinc-900
+}
+
+.w-md-editor-toolbar svg {
+    @apply h-5 w-5
+}

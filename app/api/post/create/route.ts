@@ -24,11 +24,14 @@ export async function POST(req: Request) {
         },
         userId: session.user.id,
       },
+      include: {
+        user: true,
+      },
     })
 
     return new Response(
       JSON.stringify({
-        userId: post.userId,
+        username: post.user.username,
         postId: post.id,
       })
     )

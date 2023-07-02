@@ -14,7 +14,7 @@ export async function SiteNavbar() {
   const session = await getAuthSession()
 
   return (
-    <header className="border-b bg-background top-0 sticky z-10">
+    <header className="border-b border-b-border/50 bg-background/50 backdrop-blur-md top-0 sticky z-10">
       <div className="container flex items-center justify-between py-4">
         {/* SideNav when mobile */}
         <div className="flex items-center gap-3">

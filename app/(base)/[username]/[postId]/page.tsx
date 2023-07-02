@@ -82,7 +82,7 @@ export default async function PostPage({ params }: PostPageProps) {
             className="py-4"
           />
 
-          <div className="mdx text-lg">
+          <div className="mdx py-4 text-lg">
             <CustomMDXRemote source={post.content} />
           </div>
         </div>

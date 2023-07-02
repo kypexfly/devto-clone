@@ -3,13 +3,12 @@ import Link from "next/link"
 
 import { PostPayload } from "@/types/post"
 
-import { Icons } from "./Icons"
+import BookmarkButton from "./BookmarkButton"
 import { PostAuthor } from "./PostAuthor"
 import Tag from "./Tag"
 import { AspectRatio } from "./ui/aspect-ratio"
-import { Button, buttonVariants } from "./ui/Button"
+import { buttonVariants } from "./ui/Button"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/Card"
-import { UserAvatar } from "./UserAvatar"
 
 interface PostProps {
   post: PostPayload
@@ -75,13 +74,7 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
             </Link>
           </div>
 
-          <Button
-            variant="ghost"
-            aria-label={`Bookmark "${post.title}"`}
-            title={`Bookmark "${post.title}"`}
-          >
-            <Icons.bookmark />
-          </Button>
+          <BookmarkButton title={post.title} />
         </div>
       </CardContent>
     </Card>

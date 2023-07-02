@@ -24,7 +24,7 @@ const sideOptions = [
     label: "Videos",
   },
   {
-    url: "/t",
+    url: "/t/javascript",
     label: "Tags",
   },
 ]
