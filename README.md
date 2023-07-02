@@ -1,8 +1,54 @@
+## Dev.to Clone
+This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 13 and TypeScript.
+
+> This project is still in development. Not production ready yet.
+
+# Tech Stack
+* Next.js 13 App router + Typescript
+* Next API routes for backend endpoints
+* Prisma + PostgreSQL (Supabase)
+* TailwindCSS + Shadcn UI
+* Zod validation
+* Auth.js
+* MDX
+
+## Features
+* OAuth with Google and Github
+* Change public username
+* Create posts with markdown
+* Tag system (ex: #javascript, #html)
+* Light, dark and system default theme toggle
+
+## To do features
+* Comment system
+* Reaction system
+* Bookmark system (save post for future reading)
+* Edit user details (name, username, description, contact, etc.)
+* Infinite scroll for posts fetching
+
+## Inspiration
+* [dev.to](https://dev.to)
+* [reddit.com](https://www.reddit.com/)
+* [Breadit by joschan21](https://github.com/joschan21/breadit)
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+First, create the .env file at root with the following variables:
+```yaml
+DATABASE_URL=
+NEXTAUTH_URL=
+NEXTAUTH_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
