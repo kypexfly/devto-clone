@@ -7,6 +7,7 @@ import { Inter } from "next/font/google"
 
 import { Toaster } from "@/components/ui/Toaster"
 import { GlobalProviders } from "@/components/GlobalProviders"
+import { SiteFooter } from "@/components/SiteFooter"
 import { SiteNavbar } from "@/components/SiteNavbar"
 
 export const metadata: Metadata = {
@@ -45,6 +46,7 @@ export default function RootLayout({
             {children}
           </div>
           <Toaster />
+          <SiteFooter />
         </GlobalProviders>
       </body>
     </html>
