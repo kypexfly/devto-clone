@@ -101,7 +101,7 @@ export function PostCreator() {
         </div>
       </div>
 
-      <div className="flex justify-end gap-3 md:px-12 md:py-8 mt-auto">
+      <div className="flex justify-end gap-3 p-4 md:px-12 md:py-8 mt-auto">
         <Button onClick={() => router.back()} variant="secondary">
           Cancel
         </Button>
