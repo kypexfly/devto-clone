@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 import { User } from "@prisma/client"
 
-import { cn } from "@/lib/utils"
+import { cn, formatTimeToNow } from "@/lib/utils"
 
 import { UserAvatar } from "./UserAvatar"
 
@@ -13,6 +13,7 @@ interface PostAuthorProps {
 }
 
 export function PostAuthor({ className, user, createdAt }: PostAuthorProps) {
+  const createdDate = new Date(createdAt)
   return (
     <div className={cn("flex flex-row items-center gap-2", className)}>
       <Link href={`/${user.username}`}>
@@ -20,8 +21,10 @@ export function PostAuthor({ className, user, createdAt }: PostAuthorProps) {
       </Link>
       <div>
         <Link href={`/${user.username}`}>{user.username}</Link> <br />
-        <small>
-          <time>{new Date(createdAt).toDateString()}</time>
+        <small className="text-muted-foreground">
+          <time>
+            {`${createdDate.toDateString()} (${formatTimeToNow(createdDate)})`}
+          </time>
         </small>
       </div>
     </div>
