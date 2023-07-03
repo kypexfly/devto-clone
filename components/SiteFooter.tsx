@@ -1,6 +1,6 @@
 export function SiteFooter() {
   return (
-    <footer className="bg-white dark:bg-zinc-900">
+    <footer className="bg-white dark:bg-zinc-900 border-t md:border-t-0">
       <div className="container px-6 py-12 mx-auto">
         <div className="grid grid-cols-2 gap-6 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
           <div>

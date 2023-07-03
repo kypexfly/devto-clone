@@ -20,7 +20,7 @@ export function PostAuthor({ className, user, createdAt }: PostAuthorProps) {
         <UserAvatar user={user} />
       </Link>
       <div>
-        <Link href={`/${user.username}`}>{user.username}</Link> <br />
+        <Link href={`/${user.username}`}>{`@${user.username}`}</Link> <br />
         <small className="text-muted-foreground">
           <time>
             {`${createdDate.toDateString()} (${formatTimeToNow(createdDate)})`}

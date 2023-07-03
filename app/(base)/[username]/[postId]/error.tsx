@@ -1,5 +1,6 @@
 "use client"
 
+import { Button } from "@/components/ui/Button"
 import { useEffect } from "react"
 
 export default function Error({
@@ -15,16 +16,16 @@ export default function Error({
   }, [error])
 
   return (
-    <div>
+    <div className="p-8 rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900">
       <h2>Something went wrong!</h2>
-      <button
+      <Button
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()
         }
       >
         Try again
-      </button>
+      </Button>
     </div>
   )
 }

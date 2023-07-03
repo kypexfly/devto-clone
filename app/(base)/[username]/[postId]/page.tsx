@@ -3,18 +3,22 @@ import Link from "next/link"
 
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Button } from "@/components/ui/Button"
-import { Card, CardHeader } from "@/components/ui/Card"
+import { Card, CardContent, CardHeader } from "@/components/ui/Card"
 import { Icons } from "@/components/Icons"
-import Tag from "@/components/Tag"
+import { Tag } from "@/components/Tag"
 
 import "@/styles/mdx.css"
 import "highlight.js/styles/github-dark.css"
 
+import { Suspense } from "react"
 import { notFound } from "next/navigation"
 
 import { db } from "@/lib/db"
-import CustomMDXRemote from "@/components/CustomMDXRemote"
+import { CommentSection } from "@/components/CommentSection"
+import { CustomMDXRemote } from "@/components/CustomMDXRemote"
+import { LatestPostsFromUser } from "@/components/LatestPostsFromUser"
 import { PostAuthor } from "@/components/PostAuthor"
+import { UserAvatar } from "@/components/UserAvatar"
 
 interface PostPageProps {
   params: {
@@ -34,7 +38,11 @@ export default async function PostPage({ params }: PostPageProps) {
     include: {
       tags: true,
       user: true,
-      comments: true,
+      _count: {
+        select: {
+          comments: true,
+        },
+      },
     },
   })
 
@@ -55,7 +63,7 @@ export default async function PostPage({ params }: PostPageProps) {
             variant="ghost"
           >
             <Icons.comment />
-            {post.comments.length}
+            {post._count.comments}
           </Button>
         </div>
       </aside>
@@ -92,28 +100,31 @@ export default async function PostPage({ params }: PostPageProps) {
             <CustomMDXRemote source={post.content} />
           </div>
         </div>
-        <section id="comments" className="p-4 md:p-12 border-t">
-          <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-            {`Comments (${post.comments.length})`}
-          </h2>
 
-          <ul>
-            {post.comments.map((c, index) => (
-              <li>
-                <p>@{`${c.userId} / ${c.createdAt.toDateString()}`}</p>
-                <p>{c.content}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <Suspense fallback={<>Loading...</>}>
+          <CommentSection postId={post.id} />
+        </Suspense>
       </div>
+
       <div className="hidden lg:flex flex-col lg:col-span-3 gap-3">
         <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full">
-          <CardHeader>User Card</CardHeader>
+          <CardHeader className="-mt-8 flex items-center">
+            <UserAvatar user={post.user} className="h-16 w-16" />
+            <h2 className="text-xl font-semibold">
+              <Link
+                href={`/${post.user.username}`}
+              >{`@${post.user.username}`}</Link>
+            </h2>
+          </CardHeader>
+          <CardContent className="text-muted-foreground">
+            {post.user.username} has no description.
+          </CardContent>
         </Card>
-        <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full">
-          <CardHeader>More from {post.user.username}</CardHeader>
-        </Card>
+
+        <LatestPostsFromUser
+          userId={post.userId}
+          username={post.user.username as string}
+        />
       </div>
     </div>
   )

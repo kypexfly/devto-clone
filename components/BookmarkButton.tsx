@@ -14,14 +14,10 @@ interface BookmarkButton {
   userId?: string // TODO: remove optional
 }
 
-export default function BookmarkButton({
-  title,
-  postId,
-  userId,
-}: BookmarkButton) {
+export function BookmarkButton({ title, postId, userId }: BookmarkButton) {
   const [saved, setSaved] = useState<boolean>(false)
   const { toast } = useToast()
-  
+
   // TODO: bookmark logic for server side
 
   const handleClick = () => {

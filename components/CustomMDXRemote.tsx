@@ -138,7 +138,7 @@ const components: MDXComponents = {
   code: ({ className, ...props }) => (
     <code
       className={cn(
-        "relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm !bg-black",
+        "relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm !bg-black text-white",
         className
       )}
       {...props}
@@ -146,7 +146,7 @@ const components: MDXComponents = {
   ),
 }
 
-export default function CustomMDXRemote(props: MDXRemoteProps) {
+export function CustomMDXRemote(props: MDXRemoteProps) {
   return (
     <MDXRemote
       {...props}

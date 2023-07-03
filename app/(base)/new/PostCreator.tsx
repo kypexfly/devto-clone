@@ -70,7 +70,7 @@ export function PostCreator() {
     },
   })
   return (
-    <div className="overflow-hidden col-span-12 md:col-span-11 lg:col-span-8 bg-card rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900">
+    <div className="overflow-hidden col-span-12 md:col-span-11 lg:col-span-8 rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900">
       <div className="flex flex-col gap-3 [&>label]:font-bold p-4 md:px-12 md:py-8">
         <h1 className="tracking-tight font-bold">Create New Post</h1>
         <Input

@@ -3,9 +3,9 @@ import Link from "next/link"
 
 import { PostPayload } from "@/types/post"
 
-import BookmarkButton from "./BookmarkButton"
+import { BookmarkButton } from "./BookmarkButton"
 import { PostAuthor } from "./PostAuthor"
-import Tag from "./Tag"
+import { Tag } from "./Tag"
 import { AspectRatio } from "./ui/aspect-ratio"
 import { buttonVariants } from "./ui/Button"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/Card"
