@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/Button"
 import { Card, CardHeader } from "@/components/ui/Card"
 import { Icons } from "@/components/Icons"
 import Tag from "@/components/Tag"
-import { UserAvatar } from "@/components/UserAvatar"
 
 import "@/styles/mdx.css"
 import "highlight.js/styles/github-dark.css"
@@ -45,11 +44,18 @@ export default async function PostPage({ params }: PostPageProps) {
     <div className="grid grid-cols-12 gap-3 grow">
       <aside className="hidden md:block md:col-span-1 ">
         <div className="sticky top-20 flex flex-col gap-4">
-          <Button className="p-2 md:py-6" variant="ghost">
-            <Icons.heart />
+          <Button
+            className="flex flex-col items-center gap-2 p-2 md:py-4 h-auto"
+            variant="ghost"
+          >
+            <Icons.heart />0
           </Button>
-          <Button className="p-2 md:py-6" variant="ghost">
+          <Button
+            className="flex flex-col items-center gap-2 p-2 md:py-4 h-auto"
+            variant="ghost"
+          >
             <Icons.comment />
+            {post.comments.length}
           </Button>
         </div>
       </aside>
