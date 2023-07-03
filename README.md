@@ -16,6 +16,7 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 * OAuth with Google and Github
 * Change public username
 * Create posts with markdown
+* Infinite scroll for posts fetching
 * Tag system (ex: #javascript, #html)
 * Light, dark and system default theme toggle
 
@@ -23,8 +24,8 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 * Comment system
 * Reaction system
 * Bookmark system (save post for future reading)
+* User can upload their cover post
 * Edit user details (name, username, description, contact, etc.)
-* Infinite scroll for posts fetching
 
 ## Inspiration
 * [dev.to](https://dev.to)
