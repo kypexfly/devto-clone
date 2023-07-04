@@ -19,20 +19,25 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 - [x] Infinite scroll for posts fetching
 - [x] Tag system (ex: #javascript, #html)
 - [x] Light, dark and system default theme toggle
-- [ ] Bookmark system (save post for future reading)
+- [x] Bookmark system (save post for future reading)
 - [ ] Users can edit their posts
 - [ ] Comment system
 - [ ] Edit user details (name, username, description, contact, etc.)
 - [ ] User can upload their cover post
 - [ ] Reaction system
 
+## To do
+- [x] Implement react-hook-form with Zod input validation
+- [x] Table of content
+
 ## Bugs
 - [ ] Posts with mdx errors won't load
-- [ ] Implement react-hook-form with Zod input validation
+- [ ] Bookmark button not updating state
 
 ## Questions
 - **Bookmark: post, put or patch?**
     - PUT = modificación completa, PATCH = Modificación parcial.
+- How to implement react-hook-form "register" to custom components
 
 ## Inspiration
 * [dev.to](https://dev.to)
