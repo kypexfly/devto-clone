@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { Button } from "@/components/ui/Button"
+import { Button, buttonVariants } from "@/components/ui/Button"
 import { Card, CardContent, CardHeader } from "@/components/ui/Card"
 import { Icons } from "@/components/Icons"
 import { Tag } from "@/components/Tag"
@@ -14,6 +14,7 @@ import { Suspense } from "react"
 import { notFound } from "next/navigation"
 
 import { db } from "@/lib/db"
+import { cn } from "@/lib/utils"
 import { CommentSection } from "@/components/CommentSection"
 import { CustomMDXRemote } from "@/components/CustomMDXRemote"
 import { LatestPostsFromUser } from "@/components/LatestPostsFromUser"
@@ -58,13 +59,16 @@ export default async function PostPage({ params }: PostPageProps) {
           >
             <Icons.heart />0
           </Button>
-          <Button
-            className="flex flex-col items-center gap-2 p-2 md:py-4 h-auto"
-            variant="ghost"
+          <Link
+            href="#comments"
+            className={cn(
+              buttonVariants({ variant: "ghost" }),
+              "flex flex-col items-center gap-2 p-2 md:py-4 h-auto"
+            )}
           >
             <Icons.comment />
             {post._count.comments}
-          </Button>
+          </Link>
         </div>
       </aside>
       <div className="overflow-hidden col-span-12 md:col-span-11 lg:col-span-8 bg-card rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900">
@@ -125,6 +129,23 @@ export default async function PostPage({ params }: PostPageProps) {
           userId={post.userId}
           username={post.user.username as string}
         />
+
+        <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full sticky top-20">
+          <CardHeader>
+            <h2 className="text-xl font-semibold">Table of content</h2>
+          </CardHeader>
+          <ul className="[&_a]:p-4 [&_a]:block text-sm">
+            <li>
+              <Link href={`#heading`}>h1</Link>
+            </li>
+            <li>
+              <Link href={`#heading`}>h2</Link>
+            </li>
+            <li>
+              <Link href={`#heading`}>h3</Link>
+            </li>
+          </ul>
+        </Card>
       </div>
     </div>
   )

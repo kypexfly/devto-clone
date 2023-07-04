@@ -10,6 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum BookmarkType {
+  SAVE
+  UNSAVE
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -51,18 +56,21 @@ model User {
 
   posts    Post[]
   comments Comment[]
+  bookmark Bookmark[]
 }
 
 model Post {
-  id        String    @id @default(cuid())
+  id        String     @id @default(cuid())
   title     String
+  cover     String?
   content   String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  user      User      @relation(fields: [userId], references: [id])
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  user      User       @relation(fields: [userId], references: [id])
   userId    String
-  tags      Tag[]     @relation("PostTags")
+  tags      Tag[]      @relation("PostTags")
   comments  Comment[]
+  bookmark  Bookmark[]
 }
 
 model Tag {
@@ -81,4 +89,13 @@ model Comment {
   post      Post     @relation(fields: [postId], references: [id])
   userId    String
   postId    String
+}
+
+model Bookmark {
+  user   User         @relation(fields: [userId], references: [id])
+  post   Post         @relation(fields: [postId], references: [id])
+  userId String
+  postId String
+
+  @@id([userId, postId])
 }
