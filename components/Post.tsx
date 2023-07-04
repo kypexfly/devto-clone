@@ -75,7 +75,6 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
           </div>
 
           <BookmarkButton title={post.title} postId={post.id} />
-          
         </div>
       </CardContent>
     </Card>
