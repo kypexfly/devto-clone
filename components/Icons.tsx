@@ -1,4 +1,5 @@
 import {
+  type Icon as LucideIcon,
   BookmarkIcon,
   Cog,
   Heart,
@@ -11,7 +12,7 @@ import {
   Twitter,
   User,
   X,
-  type Icon as LucideIcon,
+  Edit,
 } from "lucide-react"
 
 export type Icon = LucideIcon
@@ -45,4 +46,5 @@ export const Icons = {
   heart: Heart,
   comment: MessageCircle,
   bookmark: BookmarkIcon,
+  edit: Edit
 }
