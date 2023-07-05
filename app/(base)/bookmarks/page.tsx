@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 
 import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
+import { Icons } from "@/components/Icons"
 import { Post } from "@/components/Post"
 
 export default async function BookmarksPage() {
@@ -28,7 +29,7 @@ export default async function BookmarksPage() {
   })
 
   return (
-    <div>
+    <div className="pb-12">
       <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3 pt-4 px-2">
         My Bookmarks
       </h1>
@@ -39,6 +40,12 @@ export default async function BookmarksPage() {
           </li>
         ))}
       </ul>
+      {!bookmarks.length && (
+        <p className="pt-4 px-2">
+          <Icons.bookmark size={24} className="inline-block" /> No bookmarks
+          yet.
+        </p>
+      )}
     </div>
   )
 }
