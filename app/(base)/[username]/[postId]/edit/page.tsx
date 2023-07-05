@@ -51,7 +51,7 @@ export default async function EditPage({ params }: PostEditPageProps) {
             content: post.content,
           }}
           postId={post.id}
-          userId={post.userId}
+          authorId={post.userId}
         />
       </div>
       <div className="hidden md:flex flex-col md:col-span-3 gap-3">

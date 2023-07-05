@@ -57,6 +57,10 @@ model User {
   posts    Post[]
   comments Comment[]
   bookmark Bookmark[]
+
+  // TODO: Should do this?
+  // @@index([username])
+
 }
 
 model Post {

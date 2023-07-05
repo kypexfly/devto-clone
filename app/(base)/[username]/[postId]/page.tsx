@@ -134,7 +134,9 @@ export default async function PostCreatorPage({
       <div className="hidden lg:flex flex-col lg:col-span-3 gap-3">
         <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full">
           <CardHeader className="-mt-8 flex items-center">
-            <UserAvatar user={post.user} className="h-16 w-16" />
+            <Link href={`/${post.user.username}`}>
+              <UserAvatar user={post.user} className="h-16 w-16" />
+            </Link>
             <h2 className="text-xl font-semibold">
               <Link
                 href={`/${post.user.username}`}

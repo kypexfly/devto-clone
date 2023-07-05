@@ -2,29 +2,38 @@ import { z } from "zod"
 
 import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
-import { PostValidator } from "@/lib/validators/post"
+import { PostUpdateValidator } from "@/lib/validators/post"
 
 export async function PATCH(req: Request) {
   try {
     const body = await req.json()
-
     const session = await getAuthSession()
-    const { title, tags, content } = PostValidator.parse(body)
 
-    if (session?.user.id != post.user.id) {
+    const { title, tags, content, postId, authorId } =
+      PostUpdateValidator.parse(body)
+
+    if (session?.user.id != authorId) {
       return new Response("Unauthorized", { status: 401 })
     }
 
-    const postExist = await db.post.findUnique({
-      title,
-      content,
-      tags,
+    const updatedPost = await db.post.update({
+      where: {
+        id: postId,
+      },
+      data: {
+        title,
+        // TODO: add tags in the update
+        content,
+      },
+      include: {
+        user: true,
+      },
     })
 
     return new Response(
       JSON.stringify({
-        username: post.user.username,
-        postId: post.id,
+        username: updatedPost.user.username,
+        postId: updatedPost.id,
       })
     )
   } catch (err) {

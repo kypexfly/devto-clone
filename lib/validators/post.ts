@@ -11,7 +11,7 @@ export const PostUpdateValidator = z.object({
   tags: z.array(z.string()).min(1).max(4),
   content: z.any(),
   postId: z.string(),
-  userId: z.string(),
+  authorId: z.string(),
 })
 
 export type PostCreationRequest = z.infer<typeof PostValidator>

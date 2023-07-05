@@ -29,10 +29,14 @@ type CreatePostResponse = {
 interface PostEditorProps {
   initialValues?: PostCreationRequest
   postId: string
-  userId: string
+  authorId: string
 }
 
-export function PostEditor({ initialValues, postId, userId }: PostEditorProps) {
+export function PostEditor({
+  initialValues,
+  postId,
+  authorId,
+}: PostEditorProps) {
   const { theme } = useTheme()
   const router = useRouter()
 
@@ -43,7 +47,7 @@ export function PostEditor({ initialValues, postId, userId }: PostEditorProps) {
         tags,
         content,
         postId,
-        userId,
+        authorId,
       })
 
       const { data } = await axios.patch<CreatePostResponse>(
@@ -70,11 +74,9 @@ export function PostEditor({ initialValues, postId, userId }: PostEditorProps) {
     },
     onSuccess: (data) => {
       toast({
-        description: "Post created successfully",
+        description: "Post updated successfully",
       })
-
       const { username, postId } = data
-
       router.push(`/${username}/${postId}`)
     },
   })
