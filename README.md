@@ -21,7 +21,7 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 - [x] Light, dark and system default theme toggle
 - [x] Bookmark system (save post for future reading)
 - [x] Comment system
-- [ ] Users can edit their posts
+- [x] Users can edit their posts
 - [ ] Edit user details (name, username, description, contact, etc.)
 - [ ] User can upload their cover post
 - [ ] Reaction system
