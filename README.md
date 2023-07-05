@@ -20,7 +20,7 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 - [x] Tag system (ex: #javascript, #html)
 - [x] Light, dark and system default theme toggle
 - [x] Bookmark system (save post for future reading)
-- [ ] Comment system
+- [x] Comment system
 - [ ] Users can edit their posts
 - [ ] Edit user details (name, username, description, contact, etc.)
 - [ ] User can upload their cover post
@@ -33,11 +33,6 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 ## Bugs
 - [ ] Posts with mdx errors won't load
 - [ ] Bookmark button not updating state
-
-## Questions
-- **Bookmark: post, put or patch?**
-    - PUT = modificación completa, PATCH = Modificación parcial.
-- How to implement react-hook-form "register" to custom components
 
 ## Inspiration
 * [dev.to](https://dev.to)

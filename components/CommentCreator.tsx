@@ -21,17 +21,16 @@ export function CommentCreator({ postId }: { postId: string }) {
   const { mutate: createComment, isLoading } = useMutation({
     mutationFn: async ({ postId, content }: CommentRequest) => {
       const payload = CommentValidator.parse({ postId, content })
-
       const { data } = await axios.post("/api/posts/comment", payload)
-
       return data
     },
+
     onSuccess: () => {
-      toast({
-        description: "Your comment has been posted",
-      })
+      toast({ description: "Your comment has been posted" })
+      setContent("")
       router.refresh()
     },
+
     onError: (err) => {
       if (err instanceof z.ZodError) {
         toast({
@@ -53,13 +52,13 @@ export function CommentCreator({ postId }: { postId: string }) {
         value={content}
         onChange={handleOnChange}
         className="p-4"
-        placeholder="Type your comment here."
+        placeholder="Type your comment here..."
       />
       <div className="flex justify-end my-3">
         <Button
           isLoading={isLoading}
           disabled={content.length === 0 || isLoading}
-          size={"sm"}
+          size="sm"
           onClick={() => createComment({ postId, content })}
         >
           Comment
