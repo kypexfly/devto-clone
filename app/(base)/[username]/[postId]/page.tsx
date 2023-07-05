@@ -14,6 +14,7 @@ import { Suspense } from "react"
 import { notFound } from "next/navigation"
 
 import { getAuthSession } from "@/lib/auth"
+import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { cn } from "@/lib/utils"
 import { CommentSection } from "@/components/CommentSection"
@@ -23,11 +24,17 @@ import { PostAuthor } from "@/components/PostAuthor"
 import { UserAvatar } from "@/components/UserAvatar"
 
 interface PostCreatorPageProps {
+interface PostCreatorPageProps {
   params: {
     username: string
     postId: string
   }
 }
+
+export default async function PostCreatorPage({
+  params,
+}: PostCreatorPageProps) {
+  const session = await getAuthSession()
 
 export default async function PostCreatorPage({
   params,
@@ -55,6 +62,7 @@ export default async function PostCreatorPage({
   if (!post) return notFound()
 
   return (
+    <div className="grid grid-cols-12 gap-3">
     <div className="grid grid-cols-12 gap-3">
       <aside className="hidden md:block md:col-span-1 ">
         <div className="sticky top-20 flex flex-col gap-4">
@@ -150,15 +158,19 @@ export default async function PostCreatorPage({
         <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full sticky top-20">
           <CardHeader>
             <h2 className="text-xl font-semibold">Table of content (To do)</h2>
+            <h2 className="text-xl font-semibold">Table of content (To do)</h2>
           </CardHeader>
           <ul className="[&_a]:p-4 [&_a]:block text-sm">
             <li>
               <Link href={`#heading`}>Heading title 1</Link>
+              <Link href={`#heading`}>Heading title 1</Link>
             </li>
             <li>
               <Link href={`#heading`}>Heading title 2</Link>
+              <Link href={`#heading`}>Heading title 2</Link>
             </li>
             <li>
+              <Link href={`#heading`}>Heading title 3</Link>
               <Link href={`#heading`}>Heading title 3</Link>
             </li>
           </ul>
