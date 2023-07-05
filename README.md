@@ -20,15 +20,15 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 - [x] Tag system (ex: #javascript, #html)
 - [x] Light, dark and system default theme toggle
 - [x] Bookmark system (save post for future reading)
-- [ ] Users can edit their posts
 - [ ] Comment system
+- [ ] Users can edit their posts
 - [ ] Edit user details (name, username, description, contact, etc.)
 - [ ] User can upload their cover post
 - [ ] Reaction system
 
 ## To do
 - [x] Implement react-hook-form with Zod input validation
-- [x] Table of content
+- [ ] Table of content
 
 ## Bugs
 - [ ] Posts with mdx errors won't load

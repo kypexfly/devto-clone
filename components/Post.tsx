@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { PostPayload } from "@/types/post"
+import { DEFAULT_POST_COVER } from "@/config/post"
 
 import { BookmarkButton } from "./BookmarkButton"
 import { PostAuthor } from "./PostAuthor"
@@ -37,7 +38,7 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
                 className="object-cover"
                 loading="lazy"
                 alt=""
-                src="https://images.unsplash.com/photo-1578589318433-39b5de440c3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+                src={post.cover || DEFAULT_POST_COVER}
               />
             </AspectRatio>
           </Link>

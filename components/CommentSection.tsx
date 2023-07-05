@@ -1,5 +1,7 @@
 import { db } from "@/lib/db"
-import { Textarea } from "@/components/ui/Textarea"
+
+import { Comment } from "./Comment"
+import { CommentCreator } from "./CommentCreator"
 
 interface CommentSectionProps {
   postId: string
@@ -13,19 +15,21 @@ export async function CommentSection({ postId }: CommentSectionProps) {
     include: {
       user: true,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   })
 
   return (
     <section id="comments" className="p-4 md:p-12 border-t">
-      <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+      <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 mb-3">
         {`Comments (${comments.length})`}
       </h2>
-      <Textarea placeholder="Type your message here." />
-      <ul>
-        {comments.map((c, index) => (
+      <CommentCreator postId={postId} />
+      <ul className="space-y-3">
+        {comments.map((comment, index) => (
           <li key={index}>
-            <p>@{`${c.userId} / ${c.createdAt.toDateString()}`}</p>
-            <p>{c.content}</p>
+            <Comment comment={comment} />
           </li>
         ))}
       </ul>

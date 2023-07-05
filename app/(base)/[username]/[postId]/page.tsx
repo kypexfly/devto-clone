@@ -1,25 +1,25 @@
+import { Suspense } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { notFound } from "next/navigation"
 
+import "highlight.js/styles/github-dark.css"
+
+import { DEFAULT_POST_COVER } from "@/config/post"
+import { db } from "@/lib/db"
+import { cn } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Button, buttonVariants } from "@/components/ui/Button"
 import { Card, CardContent, CardHeader } from "@/components/ui/Card"
-import { Icons } from "@/components/Icons"
-import { Tag } from "@/components/Tag"
-
-import "@/styles/mdx.css"
-import "highlight.js/styles/github-dark.css"
-
-import { Suspense } from "react"
-import { notFound } from "next/navigation"
-
-import { db } from "@/lib/db"
-import { cn } from "@/lib/utils"
 import { CommentSection } from "@/components/CommentSection"
 import { CustomMDXRemote } from "@/components/CustomMDXRemote"
+import { Icons } from "@/components/Icons"
 import { LatestPostsFromUser } from "@/components/LatestPostsFromUser"
 import { PostAuthor } from "@/components/PostAuthor"
+import { Tag } from "@/components/Tag"
 import { UserAvatar } from "@/components/UserAvatar"
+
+import "@/styles/mdx.css"
 
 interface PostPageProps {
   params: {
@@ -78,7 +78,7 @@ export default async function PostPage({ params }: PostPageProps) {
             className="object-cover"
             loading="lazy"
             alt=""
-            src="https://images.unsplash.com/photo-1578589318433-39b5de440c3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+            src={post.cover || DEFAULT_POST_COVER}
           />
         </AspectRatio>
         <div className="p-4 md:p-12">
