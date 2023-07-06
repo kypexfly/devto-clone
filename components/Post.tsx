@@ -18,17 +18,11 @@ interface PostProps {
 }
 
 export function Post({ post, commentAmt, showCover }: PostProps) {
-  const { title, id, createdAt, tags, user } = post
+  const { title, id, createdAt, tags, user, cover } = post
   const { username } = user
 
   return (
     <Card className="shadow-none mb-2 bg-white dark:bg-zinc-900 border-0 max-w-3xl overflow-hidden rounded-none md:rounded-xl">
-      <Link
-        href={`/${username}/${id}`}
-        className="absolute opacity-0 inset-0 pointer-events-none"
-      >
-        {title}
-      </Link>
       {showCover && (
         <div className="cover">
           <Link href={`/${username}/${id}`}>
@@ -38,7 +32,7 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
                 className="object-cover"
                 loading="lazy"
                 alt=""
-                src={post.cover || DEFAULT_POST_COVER}
+                src={cover || DEFAULT_POST_COVER}
               />
             </AspectRatio>
           </Link>

@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const body = await req.json()
 
     const session = await getAuthSession()
-    const { title, tags, content } = PostValidator.parse(body)
+    const { title, cover, tags, content } = PostValidator.parse(body)
 
     if (!session) {
       return new Response("Unauthorized", { status: 401 })
@@ -18,6 +18,7 @@ export async function POST(req: Request) {
     const post = await db.post.create({
       data: {
         title,
+        cover,
         content,
         tags: {
           create: tags.map((tagName) => ({ name: tagName.trim() })),

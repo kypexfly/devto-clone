@@ -47,7 +47,11 @@ export default async function PostCreatorPage({
     },
     include: {
       tags: true,
-      user: true,
+      user: {
+        include: {
+          details: true,
+        },
+      },
       _count: {
         select: {
           comments: true,
@@ -81,15 +85,17 @@ export default async function PostCreatorPage({
         </div>
       </aside>
       <div className="overflow-hidden col-span-12 md:col-span-11 lg:col-span-8 bg-card rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900">
-        <AspectRatio ratio={100 / 42} className="relative">
-          <Image
-            fill
-            className="object-cover"
-            loading="lazy"
-            alt=""
-            src={post.cover || DEFAULT_POST_COVER}
-          />
-        </AspectRatio>
+        {post.cover && (
+          <AspectRatio ratio={100 / 42} className="relative">
+            <Image
+              fill
+              className="object-cover"
+              loading="lazy"
+              alt=""
+              src={post.cover}
+            />
+          </AspectRatio>
+        )}
         <div className="p-4 md:p-12">
           <h1 className="scroll-m-20 mb-3 text-5xl font-extrabold tracking-tight lg:text-6xl">
             {post.title}
@@ -143,8 +149,29 @@ export default async function PostCreatorPage({
               >{`@${post.user.username}`}</Link>
             </h2>
           </CardHeader>
-          <CardContent className="text-muted-foreground">
-            {post.user.username} has no description.
+          <CardContent className="space-y-2">
+            <p>
+              {post.user.details?.bio || (
+                <>{post.user.username} has no description.</>
+              )}
+            </p>
+            {post.user.details?.location && (
+              <p>
+                <strong>Location:</strong> {post.user.details.location}
+              </p>
+            )}
+            {post.user.details?.website && (
+              <p>
+                <a
+                  className={buttonVariants({ variant: "secondary" })}
+                  target="_blank"
+                  rel="noreferrer"
+                  href={post.user.details.website}
+                >
+                  Website
+                </a>
+              </p>
+            )}
           </CardContent>
         </Card>
 

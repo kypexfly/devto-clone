@@ -14,6 +14,7 @@ import { PostCreationRequest, PostValidator } from "@/lib/validators/post"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
+import { Separator } from "@/components/ui/separator"
 
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false })
 
@@ -27,9 +28,15 @@ export function PostCreator() {
   const router = useRouter()
 
   const { mutate: createPost, isLoading } = useMutation({
-    mutationFn: async ({ title, tags, content }: PostCreationRequest) => {
+    mutationFn: async ({
+      title,
+      cover,
+      tags,
+      content,
+    }: PostCreationRequest) => {
       const payload = PostValidator.parse({
         title,
+        cover,
         tags,
         content,
       })
@@ -76,6 +83,7 @@ export function PostCreator() {
     resolver: zodResolver(PostValidator),
     defaultValues: {
       title: "",
+      cover: "",
       tags: [],
       content: "",
     },
@@ -92,6 +100,7 @@ export function PostCreator() {
     >
       <div className="flex flex-col gap-3 [&>label]:font-bold p-4 md:px-12 md:py-8">
         <h1 className="tracking-tight font-bold">Create New Post</h1>
+
         <Input
           className="shadow-none bg-transparent border-0 focus-visible:ring-0 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl h-auto"
           inputMode="text"
@@ -118,6 +127,17 @@ export function PostCreator() {
         {errors.tags && (
           <p className="text-red-500 text-sm">{errors.tags.message}</p>
         )}
+
+        <Input
+          inputMode="text"
+          {...register("cover")}
+          placeholder="post cover image url..."
+        />
+        {errors.cover && (
+          <p className="text-red-500 text-sm">{errors.cover?.message}</p>
+        )}
+
+        <Separator />
 
         <div
           className="min-h-[350px]"

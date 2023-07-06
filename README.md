@@ -23,7 +23,7 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 - [x] Comment system
 - [x] Users can edit their posts
 - [x] Edit user details (username, bio, location and website)
-- [ ] User can upload their cover post
+- [x] User can ~~upload~~ select their cover post
 - [ ] Reaction system
 
 ## To do

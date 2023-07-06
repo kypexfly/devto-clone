@@ -1,15 +1,14 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import { useIntersection } from "@mantine/hooks"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import axios from "axios"
+import { useEffect, useRef } from "react"
 
-import { PostPayload } from "@/types/post"
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/post"
+import { PostPayload } from "@/types/post"
 
 import { Post } from "./Post"
-import { PostSkeleton } from "./skeleton/PostFeedSkeleton"
 
 interface PostFeedProps {
   initialPosts: PostPayload[]

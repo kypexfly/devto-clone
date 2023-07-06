@@ -18,6 +18,7 @@ import {
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
+import { Separator } from "@/components/ui/separator"
 
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false })
 
@@ -41,10 +42,16 @@ export function PostEditor({
   const router = useRouter()
 
   const { mutate: updatePost, isLoading } = useMutation({
-    mutationFn: async ({ title, tags, content }: PostCreationRequest) => {
+    mutationFn: async ({
+      title,
+      cover,
+      tags,
+      content,
+    }: PostCreationRequest) => {
       const payload = PostUpdateValidator.parse({
         title,
         tags,
+        cover,
         content,
         postId,
         authorId,
@@ -128,6 +135,17 @@ export function PostEditor({
         {errors.tags && (
           <p className="text-red-500 text-sm">{errors.tags.message}</p>
         )}
+
+        <Input
+          inputMode="text"
+          {...register("cover")}
+          placeholder="post cover image url..."
+        />
+        {errors.cover && (
+          <p className="text-red-500 text-sm">{errors.cover?.message}</p>
+        )}
+
+        <Separator />
 
         <div
           className="min-h-[350px]"

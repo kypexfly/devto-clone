@@ -47,6 +47,7 @@ export default async function EditPage({ params }: PostEditPageProps) {
         <PostEditor
           initialValues={{
             title: post.title,
+            cover: post.cover ?? undefined,
             tags: post.tags.map((tag) => tag.name),
             content: post.content,
           }}

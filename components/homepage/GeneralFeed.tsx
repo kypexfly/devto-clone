@@ -9,6 +9,7 @@ export async function GeneralFeed() {
       id: true,
       createdAt: true,
       title: true,
+      cover: true,
       tags: true,
       comments: true,
       user: true,

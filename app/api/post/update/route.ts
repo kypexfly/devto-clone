@@ -9,7 +9,7 @@ export async function PATCH(req: Request) {
     const body = await req.json()
     const session = await getAuthSession()
 
-    const { title, tags, content, postId, authorId } =
+    const { title, cover, tags, content, postId, authorId } =
       PostUpdateValidator.parse(body)
 
     if (session?.user.id != authorId) {
@@ -22,6 +22,7 @@ export async function PATCH(req: Request) {
       },
       data: {
         title,
+        cover,
         // TODO: add tags in the update
         content,
       },
