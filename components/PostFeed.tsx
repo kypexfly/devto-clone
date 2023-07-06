@@ -77,12 +77,13 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
         )
       })}
 
-      {isFetchingNextPage && (
+      {/* TODO: Show skeleton correctly */}
+      {/* {isFetchingNextPage && (
         <li>
           <PostSkeleton />
           <PostSkeleton />
         </li>
-      )}
+      )} */}
     </ul>
   )
 }
