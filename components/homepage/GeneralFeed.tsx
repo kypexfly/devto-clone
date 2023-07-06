@@ -1,5 +1,5 @@
-import { db } from "@/lib/db"
 import { INITIAL_POSTS_RESULTS } from "@/config/post"
+import { db } from "@/lib/db"
 
 import PostFeed from "../PostFeed"
 

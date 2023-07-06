@@ -1,13 +1,17 @@
-import { UsernameForm } from "@/components/UsernameForm"
+import { getAuthSession } from "@/lib/auth"
 
-export default function SettingsPage() {
+import { SettingsForm } from "./SettingsForm"
+
+export default async function SettingsPage() {
+  const session = await getAuthSession()
+
   return (
-    <div className="space-y-6 p-8 rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900">
-      <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3">
-        Change username
+    <main className="w-full max-w-screen-md mx-auto space-y-6">
+      <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl pt-4 md:pt-0 pb-4 px-2">
+        Settings for {`@${session?.user.username}`}
       </h1>
 
-      <UsernameForm />
-    </div>
+      <SettingsForm />
+    </main>
   )
 }
