@@ -22,6 +22,7 @@ export default async function BookmarksPage() {
           title: true,
           tags: true,
           user: true,
+          cover: true,
           comments: true,
         },
       },
@@ -29,7 +30,7 @@ export default async function BookmarksPage() {
   })
 
   return (
-    <div className="pb-12">
+    <div className="w-full max-w-screen-md mx-auto">
       <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3 pt-4 px-2">
         My Bookmarks
       </h1>

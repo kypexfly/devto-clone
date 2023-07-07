@@ -91,6 +91,7 @@ export function PostCreator() {
 
   const onSubmit = (data: PostCreationRequest) => {
     createPost(data)
+    return false
   }
 
   return (

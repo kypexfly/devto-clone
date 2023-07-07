@@ -29,12 +29,14 @@ export function BookmarkButton({ title, postId }: BookmarkButton) {
     },
     onSuccess: (data) => {
       if (data === "SAVED") {
+        // setSaved(true)
         return toast({
           description: `"${title}" saved from your bookmarks.`,
         })
       }
 
       if (data === "UNSAVED") {
+        // setSaved(false)
         return toast({
           description: `"${title}" deleted from your bookmarks.`,
         })
@@ -54,14 +56,13 @@ export function BookmarkButton({ title, postId }: BookmarkButton) {
   })
 
   return (
-    <Button
-      variant="ghost"
+    <button
       aria-label={`Bookmark "${title}"`}
       title={`Bookmark "${title}"`}
       onClick={() => updateBookmark({ postId })}
-      className={cn(saved && "text-blue-600")}
+      className={cn(saved && "text-blue-600", "px-2")}
     >
       <Icons.bookmark />
-    </Button>
+    </button>
   )
 }

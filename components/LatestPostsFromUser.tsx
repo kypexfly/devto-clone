@@ -32,7 +32,7 @@ export async function LatestPostsFromUser({
       </CardHeader>
       <ul className="[&_a]:p-4 [&_a]:block text-sm">
         {posts.map((post) => (
-          <li key={post.id}>
+          <li key={post.id} className="border-t">
             <Link href={`/${username}/${post.id}`}>{post.title}</Link>
           </li>
         ))}

@@ -26,7 +26,7 @@ export default async function TagsPage({ params }: TagsPageProps) {
   })
 
   return (
-    <div>
+    <div className="w-full max-w-screen-md mx-auto">
       <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3 pt-4 px-2">
         #{params.tag}
       </h1>

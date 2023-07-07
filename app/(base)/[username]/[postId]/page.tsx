@@ -3,28 +3,22 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-import "highlight.js/styles/github-dark.css"
-
-import { DEFAULT_POST_COVER } from "@/config/post"
+import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { cn } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Button, buttonVariants } from "@/components/ui/Button"
 import { Card, CardContent, CardHeader } from "@/components/ui/Card"
-import { Icons } from "@/components/Icons"
-import { Tag } from "@/components/Tag"
-
-import "@/styles/mdx.css"
-import "highlight.js/styles/github-dark.css"
-
-import { getAuthSession } from "@/lib/auth"
 import { CommentSection } from "@/components/CommentSection"
 import { CustomMDXRemote } from "@/components/CustomMDXRemote"
+import { Icons } from "@/components/Icons"
 import { LatestPostsFromUser } from "@/components/LatestPostsFromUser"
 import { PostAuthor } from "@/components/PostAuthor"
+import { Tag } from "@/components/Tag"
 import { UserAvatar } from "@/components/UserAvatar"
 
 import "@/styles/mdx.css"
+import "highlight.js/styles/github-dark.css"
 
 interface PostCreatorPageProps {
   params: {
@@ -180,7 +174,8 @@ export default async function PostCreatorPage({
           username={post.user.username as string}
         />
 
-        <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full sticky top-20">
+        {/* TODO: Table of content */}
+        {/* <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full sticky top-20">
           <CardHeader>
             <h2 className="text-xl font-semibold">Table of content (To do)</h2>
           </CardHeader>
@@ -195,7 +190,7 @@ export default async function PostCreatorPage({
               <Link href={`#heading`}>Heading title 3</Link>
             </li>
           </ul>
-        </Card>
+        </Card> */}
       </div>
     </div>
   )
