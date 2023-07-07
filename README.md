@@ -29,6 +29,7 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 ## To do
 - [x] Implement react-hook-form with Zod input validation
 - [ ] Change from userId to authorId on Prisma schema + refactoring
+- [ ] Cache Prisma and Axios request if necessary
 - [ ] Table of content
 
 ## Bugs
