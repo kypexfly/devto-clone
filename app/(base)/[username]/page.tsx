@@ -1,11 +1,9 @@
-import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import { db } from "@/lib/db"
-import { buttonVariants } from "@/components/ui/Button"
 import { Icons } from "@/components/Icons"
 import { Post } from "@/components/Post"
 import { UserAvatar } from "@/components/UserAvatar"
+import { db } from "@/lib/db"
 
 interface UserPageProps {
   params: {
@@ -39,7 +37,7 @@ export async function generateMetadata({ params }: UserPageProps) {
   if (!user) return notFound()
 
   return {
-    title: `${username}'s profile`,
+    title: `@${username}'s profile`,
   }
 }
 

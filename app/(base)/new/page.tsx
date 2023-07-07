@@ -4,6 +4,12 @@ import { PostCreator } from "./PostCreator"
 
 import "@/styles/post-creator.css"
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Create post",
+}
+
 export default function CreatePage() {
   return (
     <div className="grid grid-cols-12 gap-3">

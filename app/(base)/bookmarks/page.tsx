@@ -1,9 +1,15 @@
+import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { Icons } from "@/components/Icons"
 import { Post } from "@/components/Post"
+
+export const metadata: Metadata = {
+  title: "Bookmarks",
+  description: "Your saved posts",
+}
 
 export default async function BookmarksPage() {
   const session = await getAuthSession()

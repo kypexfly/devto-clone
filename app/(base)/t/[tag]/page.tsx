@@ -1,4 +1,6 @@
 import React from "react"
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
 
 import { db } from "@/lib/db"
 import { Post } from "@/components/Post"
@@ -6,6 +8,14 @@ import { Post } from "@/components/Post"
 interface TagsPageProps {
   params: {
     tag: string
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: TagsPageProps): Promise<Metadata> {
+  return {
+    title: `#${params.tag}`,
   }
 }
 
@@ -36,6 +46,11 @@ export default async function TagsPage({ params }: TagsPageProps) {
             <Post commentAmt={post.comments.length} post={post} />
           </li>
         ))}
+        {posts.length === 0 && (
+          <p className="text-gray-600 py-4 px-2">
+            No posts found for this tag.
+          </p>
+        )}
       </ul>
     </div>
   )

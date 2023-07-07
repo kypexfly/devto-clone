@@ -20,10 +20,44 @@ import { UserAvatar } from "@/components/UserAvatar"
 import "@/styles/mdx.css"
 import "highlight.js/styles/github-dark.css"
 
+import { Metadata } from "next"
+
 interface PostCreatorPageProps {
   params: {
     username: string
     postId: string
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: PostCreatorPageProps): Promise<Metadata> {
+  const post = await db.post.findFirst({
+    where: {
+      id: params.postId,
+      user: {
+        username: params.username,
+      },
+    },
+    include: {
+      tags: true,
+      user: {
+        include: {
+          details: true,
+        },
+      },
+      _count: {
+        select: {
+          comments: true,
+        },
+      },
+    },
+  })
+
+  if (!post) return notFound()
+
+  return {
+    title: post?.title,
   }
 }
 

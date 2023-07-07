@@ -1,19 +1,23 @@
+import { Metadata } from "next"
+import { notFound } from "next/navigation"
+
+import { getAuthSession } from "@/lib/auth"
+import { db } from "@/lib/db"
 import { Card, CardContent, CardHeader } from "@/components/ui/Card"
 
 import { PostEditor } from "./PostEditor"
 
 import "@/styles/post-creator.css"
 
-import { notFound } from "next/navigation"
-
-import { getAuthSession } from "@/lib/auth"
-import { db } from "@/lib/db"
-
 interface PostEditPageProps {
   params: {
     username: string
     postId: string
   }
+}
+
+export const metadata: Metadata = {
+  title: "Edit post",
 }
 
 export default async function EditPage({ params }: PostEditPageProps) {
