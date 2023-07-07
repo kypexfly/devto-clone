@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
-import axios from "axios"
-import { z } from "zod"
+import axios, { AxiosError } from "axios"
 
 import { CommentRequest, CommentValidator } from "@/lib/validators/comment"
 import { toast } from "@/hooks/use-toast"
-import { Button } from "@/components/ui/Button"
+import { Button, buttonVariants } from "@/components/ui/Button"
 import { Textarea } from "@/components/ui/Textarea"
 
 export function CommentCreator({ postId }: { postId: string }) {
@@ -32,11 +32,18 @@ export function CommentCreator({ postId }: { postId: string }) {
     },
 
     onError: (err) => {
-      if (err instanceof z.ZodError) {
-        toast({
-          description: err.message,
-          variant: "destructive",
-        })
+      if (err instanceof AxiosError) {
+        if (err.response?.status === 401) {
+          return toast({
+            description: "You must be logged in to comment",
+            variant: "destructive",
+            action: (
+              <Link className={buttonVariants()} href="/login">
+                Login
+              </Link>
+            ),
+          })
+        }
       }
 
       toast({

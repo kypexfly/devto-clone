@@ -209,22 +209,6 @@ export default async function PostCreatorPage({
         />
 
         {/* TODO: Table of content */}
-        {/* <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full sticky top-20">
-          <CardHeader>
-            <h2 className="text-xl font-semibold">Table of content (To do)</h2>
-          </CardHeader>
-          <ul className="[&_a]:p-4 [&_a]:block text-sm">
-            <li>
-              <Link href={`#heading`}>Heading title 1</Link>
-            </li>
-            <li>
-              <Link href={`#heading`}>Heading title 2</Link>
-            </li>
-            <li>
-              <Link href={`#heading`}>Heading title 3</Link>
-            </li>
-          </ul>
-        </Card> */}
       </div>
     </div>
   )

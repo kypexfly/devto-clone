@@ -47,6 +47,7 @@ export function BookmarkButton({ title, postId }: BookmarkButton) {
         if (err.response?.status === 401) {
           return toast({
             description: "You must be logged in to bookmark",
+            variant: "destructive",
             action: (
               <Link className={buttonVariants()} href="/login">
                 Login
