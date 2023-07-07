@@ -2,9 +2,11 @@ import {
   BookmarkIcon,
   Cog,
   Edit,
+  Globe,
   Heart,
   Loader2,
   LucideProps,
+  MapPin,
   Menu,
   MessageCircle,
   Moon,
@@ -47,4 +49,6 @@ export const Icons = {
   comment: MessageCircle,
   bookmark: BookmarkIcon,
   edit: Edit,
+  globe: Globe,
+  map: MapPin,
 }

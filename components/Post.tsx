@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { PostPayload } from "@/types/post"
 import { DEFAULT_POST_COVER } from "@/config/post"
+import { PostPayload } from "@/types/post"
 
 import { BookmarkButton } from "./BookmarkButton"
 import { PostAuthor } from "./PostAuthor"

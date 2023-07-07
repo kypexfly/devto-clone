@@ -2,6 +2,8 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { db } from "@/lib/db"
+import { buttonVariants } from "@/components/ui/Button"
+import { Icons } from "@/components/Icons"
 import { Post } from "@/components/Post"
 import { UserAvatar } from "@/components/UserAvatar"
 
@@ -74,7 +76,12 @@ export default async function UserPage({ params }: UserPageProps) {
         <ul className="p-2 w-full text-center">
           {user.details?.bio && <li>{user.details.bio}</li>}
           <div className="flex gap-6 justify-center p-2">
-            {user.details?.location && <li>{user.details.location}</li>}
+            {user.details?.location && (
+              <li>
+                <Icons.map className="h-5 w-5 inline-block mr-1" />
+                {user.details.location}
+              </li>
+            )}
             {user.details?.website && (
               <li>
                 <a
@@ -82,6 +89,7 @@ export default async function UserPage({ params }: UserPageProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
+                  <Icons.globe className="h-5 w-5 inline-block mr-1" />
                   Website
                 </a>
               </li>

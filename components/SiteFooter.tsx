@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export function SiteFooter() {
   return (
     <footer className="bg-white dark:bg-zinc-900 border-t md:border-t-0">
@@ -264,7 +266,7 @@ export function SiteFooter() {
         </div>
         <hr className="my-6 md:my-10" />
         <div className="flex flex-col items-center justify-between sm:flex-row">
-          <a href="#">DEV Community</a>
+          <Link href="/">DEV Community</Link>
           <p className="mt-4 text-sm sm:mt-0">
             © Copyright 2023. All Rights Reserved.
           </p>

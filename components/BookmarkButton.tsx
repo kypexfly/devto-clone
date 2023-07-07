@@ -1,16 +1,16 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { useMutation } from "@tanstack/react-query"
-import axios from "axios"
-import { z } from "zod"
+import axios, { AxiosError } from "axios"
 
 import { cn } from "@/lib/utils"
 import { BookmarkRequest, BookmarkValidator } from "@/lib/validators/bookmark"
 import { useToast } from "@/hooks/use-toast"
 
 import { Icons } from "./Icons"
-import { Button } from "./ui/Button"
+import { buttonVariants } from "./ui/Button"
 
 interface BookmarkButton {
   title: string
@@ -43,13 +43,20 @@ export function BookmarkButton({ title, postId }: BookmarkButton) {
       }
     },
     onError: (err) => {
-      if (err instanceof z.ZodError) {
-        toast({
-          description: err.message,
-        })
+      if (err instanceof AxiosError) {
+        if (err.response?.status === 401) {
+          return toast({
+            description: "You must be logged in to bookmark",
+            action: (
+              <Link className={buttonVariants()} href="/login">
+                Login
+              </Link>
+            ),
+          })
+        }
       }
 
-      toast({
+      return toast({
         description: "Something went wrong.",
       })
     },
