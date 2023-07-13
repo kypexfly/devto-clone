@@ -1,16 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { useMutation } from "@tanstack/react-query"
 import axios, { AxiosError } from "axios"
 
 import { cn } from "@/lib/utils"
 import { BookmarkRequest, BookmarkValidator } from "@/lib/validators/bookmark"
+import { useCustomToast } from "@/hooks/use-custom-toast"
 import { useToast } from "@/hooks/use-toast"
 
 import { Icons } from "./Icons"
-import { buttonVariants } from "./ui/Button"
 
 interface BookmarkButton {
   title: string
@@ -20,6 +19,7 @@ interface BookmarkButton {
 export function BookmarkButton({ title, postId }: BookmarkButton) {
   const [saved, setSaved] = useState<boolean>(false)
   const { toast } = useToast()
+  const { loginToast } = useCustomToast()
 
   const { mutate: updateBookmark } = useMutation({
     mutationFn: async ({ postId }: BookmarkRequest) => {
@@ -29,14 +29,12 @@ export function BookmarkButton({ title, postId }: BookmarkButton) {
     },
     onSuccess: (data) => {
       if (data === "SAVED") {
-        // setSaved(true)
         return toast({
-          description: `"${title}" saved from your bookmarks.`,
+          description: `"${title}" saved to your bookmarks.`,
         })
       }
 
       if (data === "UNSAVED") {
-        // setSaved(false)
         return toast({
           description: `"${title}" deleted from your bookmarks.`,
         })
@@ -45,15 +43,7 @@ export function BookmarkButton({ title, postId }: BookmarkButton) {
     onError: (err) => {
       if (err instanceof AxiosError) {
         if (err.response?.status === 401) {
-          return toast({
-            description: "You must be logged in to bookmark",
-            variant: "destructive",
-            action: (
-              <Link className={buttonVariants()} href="/login">
-                Login
-              </Link>
-            ),
-          })
+          return loginToast()
         }
       }
 

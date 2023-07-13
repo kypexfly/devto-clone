@@ -1,12 +1,12 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { useIntersection } from "@mantine/hooks"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import axios from "axios"
-import { useEffect, useRef } from "react"
 
-import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/post"
 import { PostPayload } from "@/types/post"
+import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/post"
 
 import { Post } from "./Post"
 
@@ -75,14 +75,6 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
           </li>
         )
       })}
-
-      {/* TODO: Show skeleton correctly */}
-      {/* {isFetchingNextPage && (
-        <li>
-          <PostSkeleton />
-          <PostSkeleton />
-        </li>
-      )} */}
     </ul>
   )
 }

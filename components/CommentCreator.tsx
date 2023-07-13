@@ -1,22 +1,25 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
 import axios, { AxiosError } from "axios"
 
 import { CommentRequest, CommentValidator } from "@/lib/validators/comment"
+import { useCustomToast } from "@/hooks/use-custom-toast"
 import { toast } from "@/hooks/use-toast"
-import { Button, buttonVariants } from "@/components/ui/Button"
+import { Button } from "@/components/ui/Button"
 import { Textarea } from "@/components/ui/Textarea"
 
 export function CommentCreator({ postId }: { postId: string }) {
+  const router = useRouter()
+
   const [content, setContent] = useState<string>("")
+  const { loginToast } = useCustomToast()
+
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value)
   }
-  const router = useRouter()
 
   const { mutate: createComment, isLoading } = useMutation({
     mutationFn: async ({ postId, content }: CommentRequest) => {
@@ -34,15 +37,7 @@ export function CommentCreator({ postId }: { postId: string }) {
     onError: (err) => {
       if (err instanceof AxiosError) {
         if (err.response?.status === 401) {
-          return toast({
-            description: "You must be logged in to comment",
-            variant: "destructive",
-            action: (
-              <Link className={buttonVariants()} href="/login">
-                Login
-              </Link>
-            ),
-          })
+          return loginToast()
         }
       }
 
