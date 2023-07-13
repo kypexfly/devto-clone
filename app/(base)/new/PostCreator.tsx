@@ -42,7 +42,7 @@ export function PostCreator() {
       })
 
       const { data } = await axios.post<CreatePostResponse>(
-        "/api/post/create",
+        "/api/post",
         payload
       )
 
@@ -97,7 +97,7 @@ export function PostCreator() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-xl lg:col-span-8"
+      className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-lg lg:col-span-8"
     >
       <div className="flex flex-col gap-3 p-4 md:px-12 md:py-8 [&>label]:font-bold">
         <h1 className="font-bold tracking-tight">Create New Post</h1>
