@@ -92,10 +92,10 @@ export default async function PostCreatorPage({
 
   return (
     <div className="grid grid-cols-12 gap-3">
-      <aside className="hidden md:block md:col-span-1 ">
+      <aside className="hidden md:col-span-1 md:block ">
         <div className="sticky top-20 flex flex-col gap-4">
           <Button
-            className="flex flex-col items-center gap-2 p-2 md:py-4 h-auto"
+            className="flex h-auto flex-col items-center gap-2 p-2 md:py-4"
             variant="ghost"
           >
             <Icons.heart />0
@@ -104,7 +104,7 @@ export default async function PostCreatorPage({
             href="#comments"
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "flex flex-col items-center gap-2 p-2 md:py-4 h-auto"
+              "flex h-auto flex-col items-center gap-2 p-2 md:py-4"
             )}
           >
             <Icons.comment />
@@ -112,7 +112,7 @@ export default async function PostCreatorPage({
           </Link>
         </div>
       </aside>
-      <div className="overflow-hidden col-span-12 md:col-span-11 lg:col-span-8 bg-card rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900">
+      <div className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-xl lg:col-span-8">
         {post.cover && (
           <AspectRatio ratio={100 / 42} className="relative">
             <Image
@@ -125,7 +125,7 @@ export default async function PostCreatorPage({
           </AspectRatio>
         )}
         <div className="p-4 md:p-12">
-          <h1 className="scroll-m-20 mb-3 text-5xl font-extrabold tracking-tight lg:text-6xl">
+          <h1 className="mb-3 scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-6xl">
             {post.title}
           </h1>
 
@@ -153,7 +153,7 @@ export default async function PostCreatorPage({
                 href={`/${post.user.username}/${post.id}/edit`}
                 className={buttonVariants({ variant: "secondary", size: "sm" })}
               >
-                <Icons.edit className="inline mr-2" size={14} />
+                <Icons.edit className="mr-2 inline" size={14} />
                 Edit
               </Link>
             </div>
@@ -165,8 +165,8 @@ export default async function PostCreatorPage({
         </Suspense>
       </div>
 
-      <div className="hidden lg:flex flex-col lg:col-span-3 gap-3">
-        <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full">
+      <div className="hidden flex-col gap-3 lg:col-span-3 lg:flex">
+        <Card className="w-full border-0 bg-white shadow-none dark:bg-zinc-900">
           <CardHeader className="-mt-8 flex items-center">
             <Link href={`/${post.user.username}`}>
               <UserAvatar user={post.user} className="h-16 w-16" />

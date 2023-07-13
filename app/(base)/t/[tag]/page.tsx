@@ -36,8 +36,8 @@ export default async function TagsPage({ params }: TagsPageProps) {
   })
 
   return (
-    <div className="w-full max-w-screen-md mx-auto">
-      <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3 pt-4 px-2">
+    <div className="mx-auto w-full max-w-screen-md">
+      <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-3xl font-bold tracking-tight lg:text-4xl">
         #{params.tag}
       </h1>
       <ul>
@@ -47,7 +47,7 @@ export default async function TagsPage({ params }: TagsPageProps) {
           </li>
         ))}
         {posts.length === 0 && (
-          <p className="text-gray-600 py-4 px-2">
+          <p className="px-2 py-4 text-gray-600">
             No posts found for this tag.
           </p>
         )}

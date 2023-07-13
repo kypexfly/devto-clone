@@ -97,19 +97,19 @@ export function PostCreator() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="overflow-hidden col-span-12 md:col-span-11 lg:col-span-8 rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900"
+      className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-xl lg:col-span-8"
     >
-      <div className="flex flex-col gap-3 [&>label]:font-bold p-4 md:px-12 md:py-8">
-        <h1 className="tracking-tight font-bold">Create New Post</h1>
+      <div className="flex flex-col gap-3 p-4 md:px-12 md:py-8 [&>label]:font-bold">
+        <h1 className="font-bold tracking-tight">Create New Post</h1>
 
         <Input
-          className="shadow-none bg-transparent border-0 focus-visible:ring-0 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl h-auto"
+          className="h-auto scroll-m-20 border-0 bg-transparent text-4xl font-extrabold tracking-tight shadow-none focus-visible:ring-0 lg:text-5xl"
           inputMode="text"
           {...register("title", { required: true })}
           placeholder="Insert title"
         />
         {errors.title && (
-          <p className="text-red-500 text-sm">{errors.title.message}</p>
+          <p className="text-sm text-red-500">{errors.title.message}</p>
         )}
 
         <Controller
@@ -126,7 +126,7 @@ export function PostCreator() {
           )}
         />
         {errors.tags && (
-          <p className="text-red-500 text-sm">{errors.tags.message}</p>
+          <p className="text-sm text-red-500">{errors.tags.message}</p>
         )}
 
         <Input
@@ -135,7 +135,7 @@ export function PostCreator() {
           placeholder="post cover image url..."
         />
         {errors.cover && (
-          <p className="text-red-500 text-sm">{errors.cover?.message}</p>
+          <p className="text-sm text-red-500">{errors.cover?.message}</p>
         )}
 
         <Separator />
@@ -160,7 +160,7 @@ export function PostCreator() {
         </div>
       </div>
 
-      <div className="flex justify-end gap-3 p-4 md:px-12 md:py-8 mt-auto">
+      <div className="mt-auto flex justify-end gap-3 p-4 md:px-12 md:py-8">
         <Button onClick={() => router.back()} variant="secondary">
           Cancel
         </Button>

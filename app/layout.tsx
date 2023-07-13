@@ -37,12 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} antialiased flex flex-col min-h-screen bg-zinc-100 dark:bg-background`}
+        className={`${inter.className} flex min-h-screen flex-col bg-zinc-100 antialiased dark:bg-background`}
       >
         <GlobalProviders>
           <SiteNavbar />
           {authModal}
-          <div className="container px-0 py-0 md:px-3 md:py-8 flex flex-col grow">
+          <div className="container flex grow flex-col p-0 md:px-3 md:py-8">
             {children}
           </div>
           <Toaster />

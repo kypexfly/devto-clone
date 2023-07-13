@@ -22,7 +22,7 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
   const { username } = user
 
   return (
-    <Card className="shadow-none mb-2 bg-white dark:bg-zinc-900 border-0 max-w-3xl overflow-hidden rounded-none md:rounded-xl">
+    <Card className="mb-2 max-w-3xl overflow-hidden rounded-none border-0 bg-white shadow-none dark:bg-zinc-900 md:rounded-xl">
       {showCover && (
         <div className="cover">
           <Link href={`/${username}/${id}`}>
@@ -39,7 +39,7 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
         </div>
       )}
       <PostAuthor user={user} createdAt={createdAt} className="p-6 pb-0" />
-      <CardHeader className="pl-4 md:pl-16 py-2">
+      <CardHeader className="py-2 pl-4 md:pl-16">
         <CardTitle className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl">
           <Link href={`/${username}/${id}`}>{title}</Link>
         </CardTitle>

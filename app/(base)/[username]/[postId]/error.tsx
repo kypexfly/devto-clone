@@ -17,7 +17,7 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="p-8 rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900">
+    <div className="rounded-none bg-white p-8 text-card-foreground dark:bg-zinc-900 md:rounded-xl">
       <h2>Something went wrong!</h2>
       <Button
         onClick={

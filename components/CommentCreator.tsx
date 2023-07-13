@@ -61,7 +61,7 @@ export function CommentCreator({ postId }: { postId: string }) {
         className="p-4"
         placeholder="Type your comment here..."
       />
-      <div className="flex justify-end my-3">
+      <div className="my-3 flex justify-end">
         <Button
           isLoading={isLoading}
           disabled={content.length === 0 || isLoading}

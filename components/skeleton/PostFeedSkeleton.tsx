@@ -21,7 +21,7 @@ interface PostSkeletonProps {
 
 export function PostSkeleton({ showCover }: PostSkeletonProps) {
   return (
-    <Card className="shadow-none mb-2 bg-white dark:bg-zinc-900 border-0 max-w-3xl overflow-hidden">
+    <Card className="mb-2 max-w-3xl overflow-hidden border-0 bg-white shadow-none dark:bg-zinc-900">
       {showCover && (
         <div className="cover">
           <AspectRatio ratio={100 / 42} className="relative">
@@ -37,13 +37,13 @@ export function PostSkeleton({ showCover }: PostSkeletonProps) {
         </div>
 
         <div>
-          <Skeleton className="h-4 w-28 mb-2" />
+          <Skeleton className="mb-2 h-4 w-28" />
           <small>
             <Skeleton className="h-4 w-44" />
           </small>
         </div>
       </div>
-      <CardHeader className="pl-16 py-2">
+      <CardHeader className="py-2 pl-16">
         <CardTitle className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl">
           <div className="h-10 w-full" />
         </CardTitle>

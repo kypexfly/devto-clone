@@ -68,15 +68,15 @@ export default async function UserPage({ params }: UserPageProps) {
   if (!user) return notFound()
 
   return (
-    <div className="w-full max-w-screen-md mx-auto">
-      <div className="bg-white dark:bg-zinc-900 md:rounded-xl p-6 mb-3 flex flex-col justify-center items-center">
+    <div className="mx-auto w-full max-w-screen-md">
+      <div className="mb-3 flex flex-col items-center justify-center bg-white p-6 dark:bg-zinc-900 md:rounded-xl">
         <UserAvatar user={user} className="h-24 w-24" />
-        <ul className="p-2 w-full text-center">
+        <ul className="w-full p-2 text-center">
           {user.details?.bio && <li>{user.details.bio}</li>}
-          <div className="flex gap-6 justify-center p-2">
+          <div className="flex justify-center gap-6 p-2">
             {user.details?.location && (
               <li>
-                <Icons.map className="h-5 w-5 inline-block mr-1" />
+                <Icons.map className="mr-1 inline-block h-5 w-5" />
                 {user.details.location}
               </li>
             )}
@@ -87,7 +87,7 @@ export default async function UserPage({ params }: UserPageProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Icons.globe className="h-5 w-5 inline-block mr-1" />
+                  <Icons.globe className="mr-1 inline-block h-5 w-5" />
                   Website
                 </a>
               </li>
@@ -96,7 +96,7 @@ export default async function UserPage({ params }: UserPageProps) {
         </ul>
       </div>
 
-      <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3 pt-4 px-2">
+      <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-3xl font-bold tracking-tight lg:text-4xl">
         {`All posts by @${user.username}`}
       </h1>
       <ul>

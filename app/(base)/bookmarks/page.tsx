@@ -36,8 +36,8 @@ export default async function BookmarksPage() {
   })
 
   return (
-    <div className="w-full max-w-screen-md mx-auto">
-      <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3 pt-4 px-2">
+    <div className="mx-auto w-full max-w-screen-md">
+      <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-3xl font-bold tracking-tight lg:text-4xl">
         My Bookmarks
       </h1>
       <ul>
@@ -48,7 +48,7 @@ export default async function BookmarksPage() {
         ))}
       </ul>
       {!bookmarks.length && (
-        <p className="pt-4 px-2">
+        <p className="px-2 pt-4">
           <Icons.bookmark size={24} className="inline-block" /> No bookmarks
           yet.
         </p>

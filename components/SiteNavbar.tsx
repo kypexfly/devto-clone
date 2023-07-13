@@ -14,14 +14,14 @@ export async function SiteNavbar() {
   const session = await getAuthSession()
 
   return (
-    <header className="border-b border-b-border/25 bg-background/50 backdrop-blur-md top-0 sticky z-10">
+    <header className="sticky top-0 z-10 border-b border-b-border/25 bg-background/50 backdrop-blur-md">
       <div className="container flex items-center justify-between py-4">
         {/* SideNav when mobile */}
         <div className="flex items-center gap-3">
           <Sheet>
             <SheetTrigger asChild>
               <Button
-                className="md:hidden inline-block px-2"
+                className="inline-block px-2 md:hidden"
                 size="sm"
                 variant="secondary"
               >

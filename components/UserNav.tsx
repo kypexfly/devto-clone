@@ -43,13 +43,13 @@ export function UserNav({ user }: UserNav) {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Link href="/bookmarks">
-            <Icons.bookmark className="inline mr-2 h-4 w-4" />
+            <Icons.bookmark className="mr-2 inline h-4 w-4" />
             Bookmarks
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Link href="/settings">
-            <Icons.settings className="inline mr-2 h-4 w-4" />
+            <Icons.settings className="mr-2 inline h-4 w-4" />
             Settings
           </Link>
         </DropdownMenuItem>

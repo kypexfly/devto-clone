@@ -26,11 +26,11 @@ export async function LatestPostsFromUser({
   })
 
   return (
-    <Card className="shadow-none bg-white dark:bg-zinc-900 border-0 w-full">
+    <Card className="w-full border-0 bg-white shadow-none dark:bg-zinc-900">
       <CardHeader>
         <h2 className="text-xl font-semibold">More from {username}</h2>
       </CardHeader>
-      <ul className="[&_a]:p-4 [&_a]:block text-sm">
+      <ul className="text-sm [&_a]:block [&_a]:p-4">
         {posts.map((post) => (
           <li key={post.id} className="border-t">
             <Link href={`/${username}/${post.id}`}>{post.title}</Link>

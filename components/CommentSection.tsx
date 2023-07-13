@@ -21,8 +21,8 @@ export async function CommentSection({ postId }: CommentSectionProps) {
   })
 
   return (
-    <section id="comments" className="p-4 md:p-12 border-t">
-      <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 mb-3">
+    <section id="comments" className="border-t p-4 md:p-12">
+      <h2 className="mb-3 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
         {`Comments (${comments.length})`}
       </h2>
       <CommentCreator postId={postId} />

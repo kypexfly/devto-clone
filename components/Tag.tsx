@@ -5,7 +5,7 @@ export function Tag({ children, ...props }: BadgeProps) {
     <Badge
       {...props}
       variant="secondary"
-      className="hover:bg-blue-300 dark:hover:bg-blue-600 border-2 text-sm"
+      className="border-2 text-sm hover:bg-blue-300 dark:hover:bg-blue-600"
     >
       <span>#</span>
       {children}

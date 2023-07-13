@@ -80,8 +80,8 @@ export function SettingsForm({ user }: SettingsFormProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="!m-0 space-y-2">
-        <div className="p-8 rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900">
-          <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3">
+        <div className="rounded-none bg-white p-8 text-card-foreground dark:bg-zinc-900 md:rounded-xl">
+          <h1 className="mb-3 scroll-m-20 text-3xl font-bold tracking-tight lg:text-4xl">
             User
           </h1>
 
@@ -101,8 +101,8 @@ export function SettingsForm({ user }: SettingsFormProps) {
           />
         </div>
 
-        <div className="p-8 rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900 space-y-2">
-          <h1 className="scroll-m-20 text-3xl tracking-tight font-bold lg:text-4xl mb-3">
+        <div className="space-y-2 rounded-none bg-white p-8 text-card-foreground dark:bg-zinc-900 md:rounded-xl">
+          <h1 className="mb-3 scroll-m-20 text-3xl font-bold tracking-tight lg:text-4xl">
             Basic
           </h1>
 
@@ -153,7 +153,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
           />
         </div>
 
-        <div className="p-8 rounded-none md:rounded-xl text-card-foreground bg-white dark:bg-zinc-900 flex">
+        <div className="flex rounded-none bg-white p-8 text-card-foreground dark:bg-zinc-900 md:rounded-xl">
           <Button isLoading={isLoading} type="submit" className="flex-1">
             Save
           </Button>
