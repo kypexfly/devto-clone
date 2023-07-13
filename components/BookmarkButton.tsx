@@ -14,10 +14,15 @@ import { Icons } from "./Icons"
 interface BookmarkButton {
   title: string
   postId: string
+  initialState?: boolean
 }
 
-export function BookmarkButton({ title, postId }: BookmarkButton) {
-  const [saved, setSaved] = useState<boolean>(false)
+export function BookmarkButton({
+  title,
+  postId,
+  initialState,
+}: BookmarkButton) {
+  const [saved, setSaved] = useState<boolean>(initialState ?? false)
   const { toast } = useToast()
   const { loginToast } = useCustomToast()
 
@@ -29,12 +34,16 @@ export function BookmarkButton({ title, postId }: BookmarkButton) {
     },
     onSuccess: (data) => {
       if (data === "SAVED") {
+        setSaved(true)
+
         return toast({
           description: `"${title}" saved to your bookmarks.`,
         })
       }
 
       if (data === "UNSAVED") {
+        setSaved(false)
+
         return toast({
           description: `"${title}" deleted from your bookmarks.`,
         })

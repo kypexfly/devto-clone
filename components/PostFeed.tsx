@@ -55,7 +55,12 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
         if (index === 0) {
           return (
             <li key={post.id}>
-              <Post showCover post={post} commentAmt={post.comments.length} />
+              <Post
+                showCover
+                post={post}
+                commentAmt={post.comments.length}
+                bookmarked={!!post?.bookmark?.length}
+              />
             </li>
           )
         }
@@ -64,14 +69,22 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
         if (index === posts.length - 1) {
           return (
             <li key={post.id} ref={ref}>
-              <Post post={post} commentAmt={post.comments.length} />
+              <Post
+                post={post}
+                commentAmt={post.comments.length}
+                bookmarked={!!post?.bookmark?.length}
+              />
             </li>
           )
         }
 
         return (
           <li key={post.id}>
-            <Post post={post} commentAmt={post.comments.length} />
+            <Post
+              post={post}
+              commentAmt={post.comments.length}
+              bookmarked={!!post?.bookmark?.length}
+            />
           </li>
         )
       })}

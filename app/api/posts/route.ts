@@ -30,6 +30,11 @@ export async function GET(req: Request) {
         tags: true,
         comments: true,
         user: true,
+        bookmark: {
+          where: {
+            userId: session?.user?.id,
+          },
+        },
       },
       where: whereClause,
     })

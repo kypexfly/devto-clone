@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { DEFAULT_POST_COVER } from "@/config/post"
 import { PostPayload } from "@/types/post"
+import { DEFAULT_POST_COVER } from "@/config/post"
 
 import { BookmarkButton } from "./BookmarkButton"
 import { PostAuthor } from "./PostAuthor"
@@ -15,9 +15,10 @@ interface PostProps {
   post: PostPayload
   commentAmt: number
   showCover?: boolean
+  bookmarked: boolean
 }
 
-export function Post({ post, commentAmt, showCover }: PostProps) {
+export function Post({ post, commentAmt, showCover, bookmarked }: PostProps) {
   const { title, id, createdAt, tags, user, cover } = post
   const { username } = user
 
@@ -69,7 +70,7 @@ export function Post({ post, commentAmt, showCover }: PostProps) {
             </Link>
           </div>
 
-          <BookmarkButton title={post.title} postId={post.id} />
+          <BookmarkButton title={post.title} postId={post.id} initialState={bookmarked} />
         </div>
       </CardContent>
     </Card>

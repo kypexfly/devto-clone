@@ -9,5 +9,6 @@ type PostPayload = Prisma.PostGetPayload<{
     tags: true
     user: true
     comments: true
+    bookmark: true
   }
 }>

@@ -16,6 +16,18 @@ export default async function BookmarksPage() {
 
   if (!session?.user) return notFound()
 
+  let bookmark
+
+  if (!session) {
+    bookmark = false
+  } else {
+    bookmark = {
+      where: {
+        userId: session?.user?.id,
+      },
+    }
+  }
+
   const bookmarks = await db.bookmark.findMany({
     where: {
       userId: session.user.id,
@@ -30,6 +42,7 @@ export default async function BookmarksPage() {
           user: true,
           cover: true,
           comments: true,
+          bookmark,
         },
       },
     },
@@ -43,7 +56,11 @@ export default async function BookmarksPage() {
       <ul>
         {bookmarks.map((bkm, index) => (
           <li key={index}>
-            <Post commentAmt={bkm.post.comments.length} post={bkm.post} />
+            <Post
+              commentAmt={bkm.post.comments.length}
+              post={bkm.post}
+              bookmarked={!!bkm.post?.bookmark?.length}
+            />
           </li>
         ))}
       </ul>
