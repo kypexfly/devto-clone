@@ -112,7 +112,7 @@ export default async function PostCreatorPage({
           </Link>
         </div>
       </aside>
-      <div className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-xl lg:col-span-8">
+      <div className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-lg lg:col-span-8">
         {post.cover && (
           <AspectRatio ratio={100 / 42} className="relative">
             <Image

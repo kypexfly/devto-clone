@@ -69,7 +69,7 @@ export default async function UserPage({ params }: UserPageProps) {
 
   return (
     <div className="mx-auto w-full max-w-screen-md">
-      <div className="mb-3 flex flex-col items-center justify-center bg-white p-6 dark:bg-zinc-900 md:rounded-xl">
+      <div className="mb-3 flex flex-col items-center justify-center bg-white p-6 dark:bg-zinc-900 md:rounded-lg">
         <UserAvatar user={user} className="h-24 w-24" />
         <ul className="w-full p-2 text-center">
           {user.details?.bio && <li>{user.details.bio}</li>}

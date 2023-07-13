@@ -47,7 +47,7 @@ export default async function EditPage({ params }: PostEditPageProps) {
   return (
     <div className="grid grid-cols-12 gap-3">
       <aside className="hidden lg:col-span-1 lg:block "></aside>
-      <div className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-9 md:rounded-xl lg:col-span-8">
+      <div className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-9 md:rounded-lg lg:col-span-8">
         <PostEditor
           initialValues={{
             title: post.title,
