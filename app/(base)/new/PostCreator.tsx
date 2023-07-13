@@ -161,7 +161,7 @@ export function PostCreator() {
       </div>
 
       <div className="mt-auto flex justify-end gap-3 p-4 md:px-12 md:py-8">
-        <Button onClick={() => router.back()} variant="secondary">
+        <Button type="button" onClick={() => router.back()} variant="secondary">
           Cancel
         </Button>
         <Button isLoading={isLoading}>Create</Button>

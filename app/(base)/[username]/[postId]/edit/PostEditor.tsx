@@ -11,9 +11,9 @@ import { TagsInput } from "react-tag-input-component"
 import { z } from "zod"
 
 import {
+  PostCreateValidator,
   PostCreationRequest,
   PostUpdateValidator,
-  PostCreateValidator,
 } from "@/lib/validators/post"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
@@ -100,6 +100,7 @@ export function PostEditor({
 
   const onSubmit = (data: PostCreationRequest) => {
     updatePost(data)
+    return false
   }
 
   return (
@@ -169,7 +170,7 @@ export function PostEditor({
       </div>
 
       <div className="mt-auto flex justify-end gap-3 p-4 md:px-12 md:py-8">
-        <Button onClick={() => router.back()} variant="secondary">
+        <Button type="button" onClick={() => router.back()} variant="secondary">
           Cancel
         </Button>
         <Button isLoading={isLoading}>Update</Button>
