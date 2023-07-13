@@ -13,7 +13,7 @@ const coverValidation = z
   }, "URL must be from unsplash.com")
   .optional()
 
-export const PostValidator = z.object({
+export const PostCreateValidator = z.object({
   title: z.string().min(10).max(80),
   cover: coverValidation,
   tags: z.array(z.string()).min(1).max(4),
@@ -29,5 +29,10 @@ export const PostUpdateValidator = z.object({
   authorId: z.string(),
 })
 
-export type PostCreationRequest = z.infer<typeof PostValidator>
+export const PostDeleteValidator = z.object({
+  postId: z.string(),
+})
+
+export type PostCreationRequest = z.infer<typeof PostCreateValidator>
 export type PostUpdateRequest = z.infer<typeof PostUpdateValidator>
+export type PostDeleteRequest = z.infer<typeof PostDeleteValidator>

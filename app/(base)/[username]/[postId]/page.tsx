@@ -22,6 +22,8 @@ import "highlight.js/styles/github-dark.css"
 
 import { Metadata } from "next"
 
+import { DeletePostButton } from "./DeletePostButton"
+
 interface PostCreatorPageProps {
   params: {
     username: string
@@ -148,7 +150,7 @@ export default async function PostCreatorPage({
           </div>
 
           {post.userId === session?.user.id && (
-            <div className="flex justify-end">
+            <div className="flex justify-end gap-2">
               <Link
                 href={`/${post.user.username}/${post.id}/edit`}
                 className={buttonVariants({ variant: "secondary", size: "sm" })}
@@ -156,6 +158,7 @@ export default async function PostCreatorPage({
                 <Icons.edit className="mr-2 inline" size={14} />
                 Edit
               </Link>
+              <DeletePostButton postId={post.id} />
             </div>
           )}
         </div>

@@ -13,7 +13,7 @@ import { z } from "zod"
 import {
   PostCreationRequest,
   PostUpdateValidator,
-  PostValidator,
+  PostCreateValidator,
 } from "@/lib/validators/post"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
@@ -94,7 +94,7 @@ export function PostEditor({
     handleSubmit,
     formState: { errors },
   } = useForm<PostCreationRequest>({
-    resolver: zodResolver(PostValidator),
+    resolver: zodResolver(PostCreateValidator),
     defaultValues: initialValues,
   })
 

@@ -10,7 +10,7 @@ import { Controller, useForm } from "react-hook-form"
 import { TagsInput } from "react-tag-input-component"
 import { z } from "zod"
 
-import { PostCreationRequest, PostValidator } from "@/lib/validators/post"
+import { PostCreateValidator, PostCreationRequest } from "@/lib/validators/post"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
@@ -34,7 +34,7 @@ export function PostCreator() {
       tags,
       content,
     }: PostCreationRequest) => {
-      const payload = PostValidator.parse({
+      const payload = PostCreateValidator.parse({
         title,
         cover,
         tags,
@@ -80,7 +80,7 @@ export function PostCreator() {
     handleSubmit,
     formState: { errors },
   } = useForm<PostCreationRequest>({
-    resolver: zodResolver(PostValidator),
+    resolver: zodResolver(PostCreateValidator),
     defaultValues: {
       title: "",
       cover: "",
