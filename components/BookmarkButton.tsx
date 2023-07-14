@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast"
 
 import { Icons } from "./Icons"
 
-interface BookmarkButton {
+interface BookmarkButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title: string
   postId: string
   initialState?: boolean
@@ -21,6 +21,7 @@ export function BookmarkButton({
   title,
   postId,
   initialState,
+  className,
 }: BookmarkButton) {
   const [saved, setSaved] = useState<boolean>(initialState ?? false)
   const { toast } = useToast()
@@ -67,7 +68,11 @@ export function BookmarkButton({
       aria-label={`Bookmark "${title}"`}
       title={`Bookmark "${title}"`}
       onClick={() => updateBookmark({ postId })}
-      className={cn(saved && "text-blue-600", "px-2")}
+      className={cn(
+        saved && "rounded-lg bg-secondary  text-blue-600",
+        "px-2",
+        className
+      )}
     >
       <Icons.bookmark />
     </button>

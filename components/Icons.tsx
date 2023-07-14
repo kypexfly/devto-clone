@@ -11,6 +11,7 @@ import {
   MessageCircle,
   Moon,
   SunMedium,
+  Tag,
   Twitter,
   User,
   X,
@@ -51,4 +52,5 @@ export const Icons = {
   edit: Edit,
   globe: Globe,
   map: MapPin,
+  tag: Tag,
 }
