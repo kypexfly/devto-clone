@@ -22,6 +22,8 @@ import "highlight.js/styles/github-dark.css"
 
 import { Metadata } from "next"
 
+import { BookmarkButton } from "@/components/BookmarkButton"
+
 import { DeletePostButton } from "./DeletePostButton"
 
 interface PostCreatorPageProps {
@@ -68,6 +70,18 @@ export default async function PostCreatorPage({
 }: PostCreatorPageProps) {
   const session = await getAuthSession()
 
+  let bookmark
+
+  if (!session) {
+    bookmark = false
+  } else {
+    bookmark = {
+      where: {
+        userId: session?.user?.id,
+      },
+    }
+  }
+
   const post = await db.post.findFirst({
     where: {
       id: params.postId,
@@ -82,6 +96,7 @@ export default async function PostCreatorPage({
           details: true,
         },
       },
+      bookmark,
       _count: {
         select: {
           comments: true,
@@ -94,24 +109,33 @@ export default async function PostCreatorPage({
 
   return (
     <div className="grid grid-cols-12 gap-3">
-      <aside className="hidden md:col-span-1 md:block ">
-        <div className="sticky top-20 flex flex-col gap-4">
+      <aside className="fixed bottom-0 z-[1] w-full border-t border-t-border/25 bg-background/50 backdrop-blur-md md:relative md:col-span-1 md:block ">
+        <div className="sticky bottom-0 flex justify-between md:top-20 md:flex-col md:gap-4">
           <Button
-            className="flex h-auto flex-col items-center gap-2 p-2 md:py-4"
+            className="flex h-auto flex-1 items-center gap-2 p-2 md:flex-col md:py-4"
             variant="ghost"
           >
-            <Icons.heart />0
+            <Icons.heart /> 0
           </Button>
           <Link
             href="#comments"
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "flex h-auto flex-col items-center gap-2 p-2 md:py-4"
+              "flex h-auto flex-1 items-center gap-2 p-2 md:flex-col md:py-4"
             )}
           >
             <Icons.comment />
             {post._count.comments}
           </Link>
+          <BookmarkButton
+            title={post.title}
+            postId={post.id}
+            initialState={!!post?.bookmark?.length}
+            className={cn(
+              buttonVariants({ variant: "ghost" }),
+              "flex h-auto flex-1 items-center gap-2 p-2 md:flex-col md:py-6"
+            )}
+          />
         </div>
       </aside>
       <div className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-lg lg:col-span-8">
