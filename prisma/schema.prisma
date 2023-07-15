@@ -51,8 +51,8 @@ model User {
 
   posts    Post[]
   comments Comment[]
-  bookmark Bookmark[]
-  Reaction Reaction[]
+  bookmarks Bookmark[]
+  reactions Reaction[]
   details  UserDetails?
 
   @@index([username])
@@ -78,8 +78,8 @@ model Post {
   userId    String
   tags      Tag[]      @relation("PostTags")
   comments  Comment[]
-  bookmark  Bookmark[]
-  Reaction  Reaction[]
+  bookmarks  Bookmark[]
+  reactions  Reaction[]
 }
 
 model Tag {

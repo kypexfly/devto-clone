@@ -60,7 +60,7 @@ export function Post({ post, commentAmt, showCover, bookmarked }: PostProps) {
               className={buttonVariants({ variant: "ghost" })}
               href={`${username}/${id}`}
             >
-              0 reaction
+              {post?._count?.reactions || 0} reaction
             </Link>
             <Link
               className={buttonVariants({ variant: "ghost" })}

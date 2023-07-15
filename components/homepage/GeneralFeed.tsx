@@ -26,7 +26,7 @@ export async function GeneralFeed() {
       cover: true,
       tags: true,
       comments: true,
-      bookmark,
+      bookmarks: bookmark,
       user: true,
     },
     orderBy: {

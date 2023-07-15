@@ -25,7 +25,7 @@ export function UserNav({ user }: UserNav) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+        <Button variant="ghost" className="relative h-6 w-6 rounded-full">
           <UserAvatar
             user={{ name: user.name || null, image: user.image || null }}
           />

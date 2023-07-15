@@ -23,6 +23,7 @@ import "highlight.js/styles/github-dark.css"
 import { Metadata } from "next"
 
 import { BookmarkButton } from "@/components/BookmarkButton"
+import { ReactionButton } from "@/components/ReactionButton"
 
 import { DeletePostButton } from "./DeletePostButton"
 
@@ -70,16 +71,22 @@ export default async function PostCreatorPage({
 }: PostCreatorPageProps) {
   const session = await getAuthSession()
 
-  let bookmark
+  let bookmark, reaction
 
   if (!session) {
     bookmark = false
+    reaction = false
   } else {
-    bookmark = {
+    ;(bookmark = {
       where: {
         userId: session?.user?.id,
       },
-    }
+    }),
+      (reaction = {
+        where: {
+          userId: session?.user?.id,
+        },
+      })
   }
 
   const post = await db.post.findFirst({
@@ -96,10 +103,12 @@ export default async function PostCreatorPage({
           details: true,
         },
       },
-      bookmark,
+      bookmarks: bookmark,
+      reactions: reaction,
       _count: {
         select: {
           comments: true,
+          reactions: true,
         },
       },
     },
@@ -109,14 +118,13 @@ export default async function PostCreatorPage({
 
   return (
     <div className="grid grid-cols-12 gap-3">
-      <aside className="fixed bottom-0 z-[1] w-full border-t border-t-border/25 bg-background/50 backdrop-blur-md md:relative md:col-span-1 md:block ">
+      <aside className="fixed bottom-0 z-[1] w-full border-t border-t-border/25 bg-background/50 backdrop-blur-md md:relative md:col-span-1 md:block md:bg-transparent md:backdrop-blur-0 ">
         <div className="sticky bottom-0 flex justify-between md:top-20 md:flex-col md:gap-4">
-          <Button
-            className="flex h-auto flex-1 items-center gap-2 p-2 md:flex-col md:py-4"
-            variant="ghost"
-          >
-            <Icons.heart /> 0
-          </Button>
+          <ReactionButton
+            postId={post.id}
+            count={post?._count?.reactions}
+            initialState={!!post?.reactions?.length}
+          />
           <Link
             href="#comments"
             className={cn(
@@ -130,10 +138,10 @@ export default async function PostCreatorPage({
           <BookmarkButton
             title={post.title}
             postId={post.id}
-            initialState={!!post?.bookmark?.length}
+            initialState={!!post?.bookmarks?.length}
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "flex h-auto flex-1 items-center gap-2 p-2 md:flex-col md:py-6"
+              "flex h-auto flex-1 items-center gap-2 p-2.5 md:flex-col md:py-6"
             )}
           />
         </div>

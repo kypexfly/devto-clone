@@ -58,6 +58,12 @@ export default async function UserPage({ params }: UserPageProps) {
           tags: true,
           user: true,
           comments: true,
+          bookmarks: true,
+          _count: {
+            select: {
+              reactions: true,
+            }
+          }
         },
         take: 5,
       },
@@ -102,7 +108,7 @@ export default async function UserPage({ params }: UserPageProps) {
       <ul>
         {user.posts.map((post, index) => (
           <li key={index}>
-            <Post commentAmt={post.comments.length} post={post} />
+            <Post commentAmt={post.comments.length} post={post} bookmarked={!!post?.bookmarks?.length} />
           </li>
         ))}
       </ul>

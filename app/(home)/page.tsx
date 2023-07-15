@@ -4,6 +4,8 @@ import Link from "next/link"
 import { GeneralFeed } from "@/components/homepage/GeneralFeed"
 import { PostFeedSkeleton } from "@/components/skeleton/PostFeedSkeleton"
 
+export const dynamic = "no-cache"
+
 export default function Home() {
   return (
     <>
