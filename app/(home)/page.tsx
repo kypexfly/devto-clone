@@ -6,20 +6,14 @@ import { PostFeedSkeleton } from "@/components/skeleton/PostFeedSkeleton"
 
 export const dynamic = "force-dynamic"
 
-export default function Home() {
+interface HomePageProps {}
+
+export default function HomePage({}: HomePageProps) {
   return (
     <>
-      <header>
-        <nav>
-          <ul className="flex flex-wrap items-center space-x-4 px-2 py-4 md:pt-0">
-            {["Relevant", "Latest", "Top"].map((item, index) => (
-              <li key={index}>
-                <Link href="#">{item}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
+      <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-3xl font-bold tracking-tight lg:text-4xl">
+        Latest posts
+      </h1>
       <Suspense fallback={<PostFeedSkeleton />}>
         <GeneralFeed />
       </Suspense>
