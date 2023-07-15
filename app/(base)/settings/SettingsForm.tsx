@@ -92,8 +92,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  {/* TODO: use current username as placeholder */}
-                  <Input placeholder="johndoe22" {...field} />
+                  <Input placeholder="new username..." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

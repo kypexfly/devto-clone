@@ -3,15 +3,6 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 
 > This project is still in development. Not production ready yet.
 
-# Tech Stack
-* Next.js 13 App router + Typescript
-* Next API routes for backend endpoints
-* Prisma + PostgreSQL (Supabase)
-* TailwindCSS + Shadcn UI
-* Zod validation
-* Auth.js
-* MDX
-
 ## Features
 - [x] OAuth with Google and Github
 - [x] Change public username
@@ -29,8 +20,19 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 ## To do
 - [x] Implement react-hook-form with Zod input validation
 - [x] Change from userId to authorId on Prisma schema + refactoring
+- [x] Add default message when no post list.
 - [ ] Cache Prisma and Axios request if necessary
 - [ ] Table of content
+
+# Tech Stack
+* Next.js 13 App router + Typescript
+* Next API routes for backend endpoints
+* Prisma
+* PostgreSQL + Docker
+* TailwindCSS + shadcn-ui
+* Zod validation
+* Next Auth
+* MDX
 
 ## Inspiration
 * [dev.to](https://dev.to)

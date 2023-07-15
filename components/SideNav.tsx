@@ -12,19 +12,7 @@ const sideOptions = [
     label: "Home",
   },
   {
-    url: "#",
-    label: "Listings",
-  },
-  {
-    url: "#",
-    label: "Podcasts",
-  },
-  {
-    url: "#",
-    label: "Videos",
-  },
-  {
-    url: "/t/javascript",
+    url: "/t",
     label: "Tags",
   },
 ]

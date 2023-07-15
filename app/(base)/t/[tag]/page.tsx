@@ -1,5 +1,4 @@
 import { Metadata } from "next"
-import { notFound } from "next/navigation"
 
 import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
@@ -22,8 +21,6 @@ export async function generateMetadata({
 
 export default async function TagsPage({ params }: TagsPageProps) {
   const session = await getAuthSession()
-
-  if (!session?.user) return notFound()
 
   let bookmark
 
@@ -52,9 +49,9 @@ export default async function TagsPage({ params }: TagsPageProps) {
       bookmarks: bookmark,
       _count: {
         select: {
-          reactions: true
-        }
-      }
+          reactions: true,
+        },
+      },
     },
   })
 

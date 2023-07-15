@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation"
 
+import { db } from "@/lib/db"
 import { Icons } from "@/components/Icons"
 import { Post } from "@/components/Post"
 import { UserAvatar } from "@/components/UserAvatar"
-import { db } from "@/lib/db"
 
 interface UserPageProps {
   params: {
@@ -62,10 +62,13 @@ export default async function UserPage({ params }: UserPageProps) {
           _count: {
             select: {
               reactions: true,
-            }
-          }
+            },
+          },
         },
         take: 5,
+        orderBy: {
+          createdAt: "desc",
+        },
       },
       details: true,
     },
@@ -77,6 +80,7 @@ export default async function UserPage({ params }: UserPageProps) {
     <div className="mx-auto w-full max-w-screen-md">
       <div className="mb-3 flex flex-col items-center justify-center bg-white p-6 dark:bg-zinc-900 md:rounded-lg">
         <UserAvatar user={user} className="h-24 w-24" />
+        <h2 className="text-xl font-semibold">{`@${user.username}`}</h2>
         <ul className="w-full p-2 text-center">
           {user.details?.bio && <li>{user.details.bio}</li>}
           <div className="flex justify-center gap-6 p-2">
@@ -108,7 +112,11 @@ export default async function UserPage({ params }: UserPageProps) {
       <ul>
         {user.posts.map((post, index) => (
           <li key={index}>
-            <Post commentAmt={post.comments.length} post={post} bookmarked={!!post?.bookmarks?.length} />
+            <Post
+              commentAmt={post.comments.length}
+              post={post}
+              bookmarked={!!post?.bookmarks?.length}
+            />
           </li>
         ))}
       </ul>

@@ -3,14 +3,16 @@
 import { useState } from "react"
 import { signIn } from "next-auth/react"
 
+import { toast } from "@/hooks/use-toast"
+
 import { Icon, Icons } from "./Icons"
 import type { ButtonProps } from "./ui/Button"
 import { Button } from "./ui/Button"
 
-type Provider = "google" | "github"
+type OAuhProvider = "google" | "github"
 
 interface LoginButtonProps extends ButtonProps {
-  provider: Provider
+  provider: OAuhProvider
 }
 
 export default function LoginButton({
@@ -26,14 +28,13 @@ export default function LoginButton({
     try {
       await signIn(provider)
     } catch (error) {
-      // TODO: Handle error
-      console.log(error)
+      toast({ title: "Could not login", description: "Something went wrong." })
     } finally {
       setIsLoading(false)
     }
   }
 
-  const getIconComponent = (iconKey: Provider): Icon => {
+  const getIconComponent = (iconKey: OAuhProvider): Icon => {
     return Icons[iconKey as keyof typeof Icons]
   }
 

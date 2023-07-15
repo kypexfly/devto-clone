@@ -48,9 +48,11 @@ export function Post({ post, commentAmt, showCover, bookmarked }: PostProps) {
       <CardContent className="pl-4 md:pl-16">
         <ul className="flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <Link key={tag.name} href={`/t/${tag.name}`}>
-              <Tag>{tag.name}</Tag>
-            </Link>
+            <li key={tag.name}>
+              <Link href={`/t/${tag.name}`}>
+                <Tag>{tag.name}</Tag>
+              </Link>
+            </li>
           ))}
         </ul>
 
@@ -70,7 +72,11 @@ export function Post({ post, commentAmt, showCover, bookmarked }: PostProps) {
             </Link>
           </div>
 
-          <BookmarkButton title={post.title} postId={post.id} initialState={bookmarked} />
+          <BookmarkButton
+            title={post.title}
+            postId={post.id}
+            initialState={bookmarked}
+          />
         </div>
       </CardContent>
     </Card>
