@@ -26,7 +26,10 @@ export async function POST(req: Request) {
         cover,
         content,
         tags: {
-          create: tags.map((tagName) => ({ name: tagName.trim() })),
+          connectOrCreate: tags.map((tagName) => ({
+            where: { name: tagName.trim() },
+            create: { name: tagName.trim() },
+          })),
         },
         authorId: session.user.id,
       },
@@ -72,7 +75,13 @@ export async function PATCH(req: Request) {
       data: {
         title,
         cover,
-        // TODO: add tags in the update
+        tags: {
+          connectOrCreate: tags.map((tagName) => ({
+            where: { name: tagName },
+            create: { name: tagName },
+          })),
+          set: tags.map((tagName) => ({ name: tagName })),
+        },
         content,
       },
       include: {
