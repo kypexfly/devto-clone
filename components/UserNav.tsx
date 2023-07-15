@@ -5,20 +5,21 @@ import { LogOut } from "lucide-react"
 import { User } from "next-auth"
 import { signOut } from "next-auth/react"
 
+import { cn, partiallyShowEmail } from "@/lib/utils"
+
 import { Icons } from "./Icons"
 import { Button } from "./ui/Button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/DropdownMenu"
 import { UserAvatar } from "./UserAvatar"
 
 interface UserNav extends React.HTMLAttributes<HTMLDivElement> {
-  user: Pick<User, "name" | "image" | "email">
+  user: Pick<User, "name" | "image" | "email" | "username">
 }
 
 export function UserNav({ user }: UserNav) {
@@ -32,22 +33,25 @@ export function UserNav({ user }: UserNav) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 [&_a]:flex-1" align="end" forceMount>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">{user.name}</p>
+        <DropdownMenuItem className="font-normal" asChild>
+          <Link
+            href={`/${user.username}`}
+            className={cn("flex flex-col !items-start space-y-1")}
+          >
+            <p className="text-sm font-medium leading-none">{`@${user.username}`}</p>
             <p className="text-xs leading-none text-muted-foreground">
-              {user.email}
+              {partiallyShowEmail("ricardo@gmail.com", 3)}
             </p>
-          </div>
-        </DropdownMenuLabel>
+          </Link>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem asChild>
           <Link href="/bookmarks">
             <Icons.bookmark className="mr-2 inline h-4 w-4" />
             Bookmarks
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem asChild>
           <Link href="/settings">
             <Icons.settings className="mr-2 inline h-4 w-4" />
             Settings

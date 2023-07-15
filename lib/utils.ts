@@ -60,3 +60,22 @@ export async function sleep(ms: number) {
     setTimeout(resolve, ms)
   })
 }
+
+export function partiallyShowEmail(
+  email: string,
+  visibleCharacters: number
+): string {
+  const atIndex = email.indexOf("@")
+  if (atIndex === -1) {
+    return email
+  }
+
+  const [username, domain] = email.split("@")
+
+  const visibleUsername = username.slice(0, visibleCharacters)
+  const maskedUsername = "*".repeat(
+    Math.max(0, username.length - visibleCharacters)
+  )
+
+  return `${visibleUsername}${maskedUsername}@${domain}`
+}
