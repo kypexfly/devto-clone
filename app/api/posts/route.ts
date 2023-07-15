@@ -29,7 +29,7 @@ export async function GET(req: Request) {
       include: {
         tags: true,
         comments: true,
-        user: true,
+        author: true,
         bookmarks: {
           where: {
             userId: session?.user?.id,

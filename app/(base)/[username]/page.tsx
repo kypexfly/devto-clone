@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: UserPageProps) {
           cover: true,
           title: true,
           tags: true,
-          user: true,
+          author: true,
           comments: true,
         },
         take: 5,
@@ -56,7 +56,7 @@ export default async function UserPage({ params }: UserPageProps) {
           cover: true,
           title: true,
           tags: true,
-          user: true,
+          author: true,
           comments: true,
           bookmarks: true,
           _count: {

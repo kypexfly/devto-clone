@@ -14,7 +14,7 @@ export async function LatestPostsFromUser({
 }: LatestPostsFromUserProps) {
   const posts = await db.post.findMany({
     where: {
-      userId,
+      authorId: userId,
     },
     include: {
       tags: true,

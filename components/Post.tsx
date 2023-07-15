@@ -19,8 +19,8 @@ interface PostProps {
 }
 
 export function Post({ post, commentAmt, showCover, bookmarked }: PostProps) {
-  const { title, id, createdAt, tags, user, cover } = post
-  const { username } = user
+  const { title, id, createdAt, tags, author, cover } = post
+  const { username } = author
 
   return (
     <Card className="mb-2 max-w-3xl overflow-hidden rounded-none border-0 bg-white shadow-none dark:bg-zinc-900 md:rounded-lg">
@@ -39,7 +39,7 @@ export function Post({ post, commentAmt, showCover, bookmarked }: PostProps) {
           </Link>
         </div>
       )}
-      <PostAuthor user={user} createdAt={createdAt} className="p-6 pb-0" />
+      <PostAuthor user={author} createdAt={createdAt} className="p-6 pb-0" />
       <CardHeader className="py-2 pl-4 md:pl-16">
         <CardTitle className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-3xl">
           <Link href={`/${username}/${id}`}>{title}</Link>

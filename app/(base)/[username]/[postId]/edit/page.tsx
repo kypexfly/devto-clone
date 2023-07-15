@@ -25,13 +25,13 @@ export default async function EditPage({ params }: PostEditPageProps) {
   const post = await db.post.findFirst({
     where: {
       id: params.postId,
-      user: {
+      author: {
         username: params.username,
       },
     },
     include: {
       tags: true,
-      user: true,
+      author: true,
       _count: {
         select: {
           comments: true,
@@ -42,7 +42,7 @@ export default async function EditPage({ params }: PostEditPageProps) {
 
   if (!post) return notFound()
 
-  if (session?.user.id != post.userId) return notFound()
+  if (session?.user.id != post.authorId) return notFound()
 
   return (
     <div className="grid grid-cols-12 gap-3">
@@ -56,7 +56,7 @@ export default async function EditPage({ params }: PostEditPageProps) {
             content: post.content,
           }}
           postId={post.id}
-          authorId={post.userId}
+          authorId={post.authorId}
         />
       </div>
       <div className="hidden flex-col gap-3 md:col-span-3 md:flex">

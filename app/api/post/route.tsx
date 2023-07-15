@@ -28,16 +28,16 @@ export async function POST(req: Request) {
         tags: {
           create: tags.map((tagName) => ({ name: tagName.trim() })),
         },
-        userId: session.user.id,
+        authorId: session.user.id,
       },
       include: {
-        user: true,
+        author: true,
       },
     })
 
     return new Response(
       JSON.stringify({
-        username: post.user.username,
+        username: post.author.username,
         postId: post.id,
       })
     )
@@ -76,13 +76,13 @@ export async function PATCH(req: Request) {
         content,
       },
       include: {
-        user: true,
+        author: true,
       },
     })
 
     return new Response(
       JSON.stringify({
-        username: updatedPost.user.username,
+        username: updatedPost.author.username,
         postId: updatedPost.id,
       })
     )
@@ -116,7 +116,7 @@ export async function DELETE(req: Request) {
       return new Response("Post not found", { status: 404 })
     }
 
-    if (session?.user.id != postExist.userId) {
+    if (session?.user.id != postExist.authorId) {
       return new Response("Unauthorized", { status: 401 })
     }
 

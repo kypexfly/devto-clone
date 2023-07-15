@@ -39,10 +39,15 @@ export default async function BookmarksPage() {
           createdAt: true,
           title: true,
           tags: true,
-          user: true,
+          author: true,
           cover: true,
           comments: true,
           bookmarks: bookmark,
+          _count: {
+            select: {
+              reactions: true
+            }
+          }
         },
       },
     },

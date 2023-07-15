@@ -27,7 +27,12 @@ export async function GeneralFeed() {
       tags: true,
       comments: true,
       bookmarks: bookmark,
-      user: true,
+      author: true,
+      _count: {
+        select: {
+          reactions: true
+        }
+      }
     },
     orderBy: {
       createdAt: "desc",

@@ -22,7 +22,7 @@ export function PostAuthor({ className, user, createdAt }: PostAuthorProps) {
       <div>
         <Link href={`/${user.username}`}>{`@${user.username}`}</Link> <br />
         <small className="text-muted-foreground">
-          <time>
+          <time suppressHydrationWarning>
             {`${createdDate.toDateString()} (${formatTimeToNow(createdDate)})`}
           </time>
         </small>

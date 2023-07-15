@@ -14,7 +14,7 @@ export async function DiscussCard() {
       },
     },
     include: {
-      user: true,
+      author: true,
       _count: {
         select: {
           comments: true,
@@ -33,9 +33,14 @@ export async function DiscussCard() {
         <h2 className="text-xl font-semibold">#discuss</h2>
       </CardHeader>
       <ul className="text-sm [&_a]:block [&_a]:px-6 [&_a]:py-3">
+        {posts.length === 0 && (
+          <li className="border-t px-6 py-3">
+            <span className="text-base">No posts yet</span>
+          </li>
+        )}
         {posts.map((post) => (
           <li key={post.id} className="border-t">
-            <Link href={`/${post.user.username}/${post.id}`}>
+            <Link href={`/${post.author.username}/${post.id}`}>
               <span className="text-base">{post.title}</span>
               <div className="">{post._count.comments} comments</div>
             </Link>

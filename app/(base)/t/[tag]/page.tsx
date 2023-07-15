@@ -47,9 +47,14 @@ export default async function TagsPage({ params }: TagsPageProps) {
     },
     include: {
       tags: true,
-      user: true,
+      author: true,
       comments: true,
       bookmarks: bookmark,
+      _count: {
+        select: {
+          reactions: true
+        }
+      }
     },
   })
 

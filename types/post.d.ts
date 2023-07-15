@@ -7,7 +7,7 @@ type PostPayload = Prisma.PostGetPayload<{
     cover: true
     title: true
     tags: true
-    user: true
+    author: true
     comments: true
     bookmarks: true
     _count: {

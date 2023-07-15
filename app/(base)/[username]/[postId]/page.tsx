@@ -40,13 +40,13 @@ export async function generateMetadata({
   const post = await db.post.findFirst({
     where: {
       id: params.postId,
-      user: {
+      author: {
         username: params.username,
       },
     },
     include: {
       tags: true,
-      user: {
+      author: {
         include: {
           details: true,
         },
@@ -92,13 +92,13 @@ export default async function PostCreatorPage({
   const post = await db.post.findFirst({
     where: {
       id: params.postId,
-      user: {
+      author: {
         username: params.username,
       },
     },
     include: {
       tags: true,
-      user: {
+      author: {
         include: {
           details: true,
         },
@@ -118,7 +118,7 @@ export default async function PostCreatorPage({
 
   return (
     <div className="grid grid-cols-12 gap-3">
-      <aside className="fixed bottom-0 z-[1] w-full border-t border-t-border/25 bg-background/50 backdrop-blur-md md:relative md:col-span-1 md:block md:bg-transparent md:backdrop-blur-0 ">
+      <aside className="fixed bottom-0 z-[1] w-full bg-background/50 backdrop-blur-md md:relative md:col-span-1 md:block md:bg-transparent md:backdrop-blur-0 ">
         <div className="sticky bottom-0 flex justify-between md:top-20 md:flex-col md:gap-4">
           <ReactionButton
             postId={post.id}
@@ -172,7 +172,7 @@ export default async function PostCreatorPage({
           </ul>
 
           <PostAuthor
-            user={post.user}
+            user={post.author}
             createdAt={post.createdAt}
             className="py-4"
           />
@@ -181,10 +181,10 @@ export default async function PostCreatorPage({
             <CustomMDXRemote source={post.content} />
           </div>
 
-          {post.userId === session?.user.id && (
+          {post.authorId === session?.user.id && (
             <div className="flex justify-end gap-2">
               <Link
-                href={`/${post.user.username}/${post.id}/edit`}
+                href={`/${post.author.username}/${post.id}/edit`}
                 className={buttonVariants({ variant: "secondary", size: "sm" })}
               >
                 <Icons.edit className="mr-2 inline" size={14} />
@@ -203,33 +203,33 @@ export default async function PostCreatorPage({
       <div className="hidden flex-col gap-3 lg:col-span-3 lg:flex">
         <Card className="w-full border-0 bg-white shadow-none dark:bg-zinc-900">
           <CardHeader className="-mt-8 flex items-center">
-            <Link href={`/${post.user.username}`}>
-              <UserAvatar user={post.user} className="h-16 w-16" />
+            <Link href={`/${post.author.username}`}>
+              <UserAvatar user={post.author} className="h-16 w-16" />
             </Link>
             <h2 className="text-xl font-semibold">
               <Link
-                href={`/${post.user.username}`}
-              >{`@${post.user.username}`}</Link>
+                href={`/${post.author.username}`}
+              >{`@${post.author.username}`}</Link>
             </h2>
           </CardHeader>
           <CardContent className="space-y-2">
             <p>
-              {post.user.details?.bio || (
-                <>{post.user.username} has no description.</>
+              {post.author.details?.bio || (
+                <>{post.author.username} has no description.</>
               )}
             </p>
-            {post.user.details?.location && (
+            {post.author.details?.location && (
               <p>
-                <strong>Location:</strong> {post.user.details.location}
+                <strong>Location:</strong> {post.author.details.location}
               </p>
             )}
-            {post.user.details?.website && (
+            {post.author.details?.website && (
               <p>
                 <a
                   className={buttonVariants({ variant: "secondary" })}
                   target="_blank"
                   rel="noreferrer"
-                  href={post.user.details.website}
+                  href={post.author.details.website}
                 >
                   Website
                 </a>
@@ -239,8 +239,8 @@ export default async function PostCreatorPage({
         </Card>
 
         <LatestPostsFromUser
-          userId={post.userId}
-          username={post.user.username as string}
+          userId={post.authorId}
+          username={post.author.username as string}
         />
 
         {/* TODO: Table of content */}
