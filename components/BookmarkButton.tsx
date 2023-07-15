@@ -69,7 +69,7 @@ export function BookmarkButton({
       title={`Bookmark "${title}"`}
       onClick={() => updateBookmark({ postId })}
       className={cn(
-        saved && "rounded-lg bg-secondary  text-blue-600",
+        saved && "rounded-lg text-blue-600",
         "px-2",
         className
       )}

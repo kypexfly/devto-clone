@@ -36,7 +36,7 @@ export async function DiscussCard() {
         {posts.map((post) => (
           <li key={post.id} className="border-t">
             <Link href={`/${post.user.username}/${post.id}`}>
-              {post.title}
+              <span className="text-base">{post.title}</span>
               <div className="">{post._count.comments} comments</div>
             </Link>
           </li>

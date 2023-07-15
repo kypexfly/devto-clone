@@ -59,7 +59,7 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
                 showCover
                 post={post}
                 commentAmt={post.comments.length}
-                bookmarked={!!post?.bookmark?.length}
+                bookmarked={!!post?.bookmarks?.length}
               />
             </li>
           )
@@ -72,7 +72,7 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
               <Post
                 post={post}
                 commentAmt={post.comments.length}
-                bookmarked={!!post?.bookmark?.length}
+                bookmarked={!!post?.bookmarks?.length}
               />
             </li>
           )
@@ -83,7 +83,7 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
             <Post
               post={post}
               commentAmt={post.comments.length}
-              bookmarked={!!post?.bookmark?.length}
+              bookmarked={!!post?.bookmarks?.length}
             />
           </li>
         )

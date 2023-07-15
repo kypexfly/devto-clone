@@ -49,7 +49,7 @@ export default async function TagsPage({ params }: TagsPageProps) {
       tags: true,
       user: true,
       comments: true,
-      bookmark,
+      bookmarks: bookmark,
     },
   })
 
@@ -64,7 +64,7 @@ export default async function TagsPage({ params }: TagsPageProps) {
             <Post
               commentAmt={post.comments.length}
               post={post}
-              bookmarked={!!post?.bookmark?.length}
+              bookmarked={!!post?.bookmarks?.length}
             />
           </li>
         ))}

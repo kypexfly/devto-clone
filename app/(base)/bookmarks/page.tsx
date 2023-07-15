@@ -42,7 +42,7 @@ export default async function BookmarksPage() {
           user: true,
           cover: true,
           comments: true,
-          bookmark,
+          bookmarks: bookmark,
         },
       },
     },
@@ -59,7 +59,7 @@ export default async function BookmarksPage() {
             <Post
               commentAmt={bkm.post.comments.length}
               post={bkm.post}
-              bookmarked={!!bkm.post?.bookmark?.length}
+              bookmarked={!!bkm.post?.bookmarks?.length}
             />
           </li>
         ))}
