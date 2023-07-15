@@ -18,11 +18,11 @@ import {
 } from "./ui/DropdownMenu"
 import { UserAvatar } from "./UserAvatar"
 
-interface UserNav extends React.HTMLAttributes<HTMLDivElement> {
+interface UserNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, "name" | "image" | "email" | "username">
 }
 
-export function UserNav({ user }: UserNav) {
+export function UserNav({ user }: UserNavProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

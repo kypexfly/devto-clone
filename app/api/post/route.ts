@@ -137,7 +137,6 @@ export async function DELETE(req: Request) {
 
     return new Response("OK")
   } catch (err) {
-    console.log(err)
     if (err instanceof z.ZodError) {
       return new Response(err.message, { status: 400 })
     }

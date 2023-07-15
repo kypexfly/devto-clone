@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast"
 
 import { Icons } from "./Icons"
 
-interface BookmarkButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface BookmarkButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title: string
   postId: string
   initialState?: boolean
@@ -22,7 +22,7 @@ export function BookmarkButton({
   postId,
   initialState,
   className,
-}: BookmarkButton) {
+}: BookmarkButtonProps) {
   const [saved, setSaved] = useState<boolean>(initialState ?? false)
   const { toast } = useToast()
   const { loginToast } = useCustomToast()

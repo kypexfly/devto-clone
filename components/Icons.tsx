@@ -3,7 +3,6 @@ import {
   Cog,
   Dribbble,
   Edit,
-  Facebook,
   Globe,
   Heart,
   Loader2,
@@ -25,7 +24,6 @@ export type Icon = LucideIcon
 export const Icons = {
   sun: SunMedium,
   moon: Moon,
-  logo: (props: LucideProps) => null,
   menu: Menu,
   loader: Loader2,
   settings: Cog,

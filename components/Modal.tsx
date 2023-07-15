@@ -3,7 +3,6 @@
 import { useCallback } from "react"
 import { useRouter } from "next/navigation"
 
-import { CommandDialog } from "./ui/command"
 import { Dialog, DialogContent } from "./ui/Dialog"
 
 interface ModalProps {

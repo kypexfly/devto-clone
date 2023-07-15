@@ -7,7 +7,7 @@ interface UserAuthForm extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function LoginForm({ className, ...props }: UserAuthForm) {
   return (
-    <Card className={cn("h-full w-full border-0 shadow-none", className)}>
+    <Card className={cn("h-full w-full border-0 shadow-none", className)} {...props}>
       <CardHeader>
         <CardTitle>Log In</CardTitle>
       </CardHeader>

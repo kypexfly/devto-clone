@@ -22,23 +22,22 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
     threshold: 1,
   })
 
-  const { data, fetchNextPage, isFetchingNextPage, isFetching, hasNextPage } =
-    useInfiniteQuery(
-      ["infinite-query"],
-      async ({ pageParam = 1 }) => {
-        const query = `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}`
+  const { data, fetchNextPage } = useInfiniteQuery(
+    ["infinite-query"],
+    async ({ pageParam = 1 }) => {
+      const query = `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}`
 
-        const { data } = await axios.get<PostPayload[]>(query)
-        return data
+      const { data } = await axios.get<PostPayload[]>(query)
+      return data
+    },
+
+    {
+      getNextPageParam: (_, pages) => {
+        return pages.length + 1
       },
-
-      {
-        getNextPageParam: (_, pages) => {
-          return pages.length + 1
-        },
-        initialData: { pages: [initialPosts], pageParams: [1] },
-      }
-    )
+      initialData: { pages: [initialPosts], pageParams: [1] },
+    }
+  )
 
   useEffect(() => {
     if (entry?.isIntersecting) {

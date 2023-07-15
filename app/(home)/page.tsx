@@ -1,5 +1,4 @@
 import { Suspense } from "react"
-import Link from "next/link"
 
 import { GeneralFeed } from "@/components/homepage/GeneralFeed"
 import { PostFeedSkeleton } from "@/components/skeleton/PostFeedSkeleton"
