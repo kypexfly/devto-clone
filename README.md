@@ -24,17 +24,13 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 - [x] Users can edit their posts
 - [x] Edit user details (username, bio, location and website)
 - [x] User can enter their cover post image url
-- [ ] Reaction system
+- [x] Reaction system
 
 ## To do
 - [x] Implement react-hook-form with Zod input validation
-- [ ] Change from userId to authorId on Prisma schema + refactoring
+- [x] Change from userId to authorId on Prisma schema + refactoring
 - [ ] Cache Prisma and Axios request if necessary
 - [ ] Table of content
-
-## Bugs
-- [ ] Posts with mdx errors won't load
-- [ ] Bookmark button not updating state
 
 ## Inspiration
 * [dev.to](https://dev.to)
