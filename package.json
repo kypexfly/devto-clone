@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently --kill-others \"docker-compose up database\" \"next dev\"",
     "build": "next build",
     "postinstall": "prisma generate",
     "start": "next start",
@@ -63,6 +63,7 @@
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
+    "concurrently": "^8.2.0",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
     "eslint-plugin-prettier": "^5.0.0",
