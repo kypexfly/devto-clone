@@ -266,7 +266,7 @@ export function SiteFooter() {
         </div>
         <hr className="my-6 md:my-10" />
         <div className="flex flex-col items-center justify-between sm:flex-row">
-          <Link href="/">DEV Community</Link>
+          <Link href="/"><strong>DEV</strong> Community</Link>
           <p className="mt-4 text-sm sm:mt-0">
             © Copyright 2023. All Rights Reserved.
           </p>
