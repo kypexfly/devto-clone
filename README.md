@@ -1,7 +1,6 @@
 ## Dev.to Clone
-This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 13 and TypeScript.
-
-> This project is still in development. Not production ready yet.
+Full-stack clone-like version of [Dev.to](https://dev.to) with Next.js 13 and TypeScript. Implements user authentication with Auth.js,
+infinite scroll, bookmark, tag and reaction system, posts written with Markdown, and SSR for great SEO.
 
 ## Features
 - [x] OAuth with Google and Github
@@ -16,13 +15,7 @@ This is a fullstack clone-like version of [dev.to](https://dev.to) with Next.js 
 - [x] Edit user details (username, bio, location and website)
 - [x] User can enter their cover post image url
 - [x] Reaction system
-
-## To do
-- [x] Implement react-hook-form with Zod input validation
-- [x] Change from userId to authorId on Prisma schema + refactoring
-- [x] Add default message when no post list.
-- [ ] Cache Prisma and Axios request if necessary
-- [ ] Table of content
+- [x] Form validation and toasts for notifications or errors. 
 
 # Tech Stack
 * Next.js 13 App router + Typescript
