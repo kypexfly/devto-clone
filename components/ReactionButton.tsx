@@ -65,12 +65,14 @@ export function ReactionButton({
     <Button
       onClick={() => updateReaction({ postId })}
       className={cn(
-        "flex h-auto flex-1 items-center gap-2 p-2 md:flex-col md:py-4",
-        reacted && "text-red-500"
+        "flex h-auto flex-1 items-center gap-2 p-2 md:flex-col md:py-4"
       )}
       variant="ghost"
     >
-      <Icons.heart /> {count}
+      <Icons.heart
+        className={cn(reacted && "rounded-lg fill-red-600 text-red-600")}
+      />
+      {count}
     </Button>
   )
 }
