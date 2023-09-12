@@ -2,6 +2,29 @@ import Link from "next/link"
 
 import { Icons } from "./Icons"
 
+const socials = [
+  {
+    label: "Facebook page",
+    icon: Icons.facebook,
+  },
+  {
+    label: "Discord community",
+    icon: Icons.discord,
+  },
+  {
+    label: "Twitter page",
+    icon: Icons.twitter,
+  },
+  {
+    label: "Github account",
+    icon: Icons.github,
+  },
+  {
+    label: "Dribbble account",
+    icon: Icons.dribbble,
+  },
+]
+
 export function SiteFooter() {
   return (
     <footer className="bg-white dark:bg-zinc-900">
@@ -115,44 +138,17 @@ export function SiteFooter() {
           <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
             © 2023 <Link href="/">DEV Community</Link>. All Rights Reserved.
           </span>
-          <div className="mt-4 flex space-x-5 sm:justify-center md:mt-0">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            >
-              <Icons.facebook className="h-4 w-4" />
-              <span className="sr-only">Facebook page</span>
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            >
-              <Icons.discord className="h-4 w-4" />
-              <span className="sr-only">Discord community</span>
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            >
-              <Icons.twitter className="h-4 w-4" fill="currentColor" />
-              <span className="sr-only">Twitter page</span>
-            </a>
-            <a
-              href="https://github.com/kypexfly/devto-clone"
-              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.github className="h-4 w-4" />
-              <span className="sr-only">GitHub account</span>
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            >
-              <Icons.dribbble className="h-4 w-4" />
-              <span className="sr-only">Dribbble account</span>
-            </a>
+          <div className="mt-4 flex space-x-3 sm:justify-center md:mt-0">
+            {socials.map((s) => (
+              <a
+                href="/#"
+                key={s.label}
+                className="rounded-full bg-secondary p-2 text-gray-400 hover:text-gray-900 dark:hover:text-white"
+              >
+                <s.icon className="h-4 w-4" />
+                <span className="sr-only">{s.label}</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>
