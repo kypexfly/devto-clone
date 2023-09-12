@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 
+import { Icons } from "./Icons"
 import { buttonVariants } from "./ui/Button"
 
 // TODO: Add a real links to the side nav
@@ -10,10 +11,12 @@ const sideOptions = [
   {
     url: "/",
     label: "Home",
+    icon: Icons.home,
   },
   {
     url: "/t",
     label: "Tags",
+    icon: Icons.tag,
   },
 ]
 
@@ -33,6 +36,7 @@ export function SideNav({ className, ...props }: SideNavProps) {
                 )}
                 href={option.url}
               >
+                <option.icon className="mr-2 h-4 w-4" />
                 {option.label}
               </Link>
             </li>

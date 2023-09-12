@@ -17,11 +17,13 @@ import {
   User,
   X,
   type Icon as LucideIcon,
+  Home,
 } from "lucide-react"
 
 export type Icon = LucideIcon
 
 export const Icons = {
+  home: Home,
   sun: SunMedium,
   moon: Moon,
   menu: Menu,
