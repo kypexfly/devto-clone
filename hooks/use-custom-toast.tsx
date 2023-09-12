@@ -7,7 +7,7 @@ import { toast } from "./use-toast"
 export const useCustomToast = () => {
   const loginToast = () => {
     const { dismiss } = toast({
-      title: "Loggin required.",
+      title: "Log in required.",
       description: "You must be logged to make this action.",
       variant: "destructive",
       action: (
