@@ -1,81 +1,73 @@
 ## Dev.to Clone
-Full-stack clone-like version of [Dev.to](https://dev.to) with Next.js 13 and TypeScript. Implements user authentication with Auth.js,
-infinite scroll, bookmark, tag and reaction system, posts written with Markdown, and SSR for great SEO.
+
+This project is a full-stack clone-like version of [Dev.to](https://dev.to), built with Next.js 13 and TypeScript. The application implements user authentication using Auth.js (formerly Next Auth), supports infinite scrolling, bookmarking, tag and reaction systems, and allows posts to be written using Markdown. Server-Side Rendering (SSR) by default to provide excellent Search Engine Optimization (SEO).
 
 ## Features
-- [x] OAuth with Google and Github
-- [x] Change public username
-- [x] Create posts with markdown
-- [x] Infinite scroll for posts fetching
-- [x] Tag system (ex: #javascript, #html)
-- [x] Light, dark and system default theme toggle
-- [x] Bookmark system (save post for future reading)
-- [x] Comment system
-- [x] Users can edit their posts
-- [x] Edit user details (username, bio, location and website)
-- [x] User can enter their cover post image url
-- [x] Reaction system
-- [x] Form validation and toasts for notifications or errors. 
+* OAuth with Google and Github
+* Public username modification
+* Ability to create posts with markdown
+* Infinite scroll for fetching posts
+* Tagging system (e.g., #javascript, #html)
+* Toggle between light and themes
+* Bookmark system to save posts for future reading
+* Comment system
+* Users can edit their own posts
+* User details can be edited (username, bio, location, and website)
+* Users can enter the URL of their cover post image
+* Reaction system
+* Form validation and toast notifications for errors or other notifications
 
 # Tech Stack
+The following technologies were used in this project:
 * Next.js 13 App router + Typescript
-* Next API routes for backend endpoints
-* Prisma
+* Route handlers (API)
+* Prisma ORM
 * PostgreSQL + Docker
-* TailwindCSS + shadcn-ui
+* TailwindCSS + ShadcnUI
 * Zod validation
 * Next Auth
 * MDX
+
+## Getting Started
+1. Clone this repository
+```sh
+git clone https://github.com/kypexfly/devto-clone.git
+```
+
+2. Move the folder an install dependencies
+```sh
+cd devto-clone
+npm install
+```
+
+3. Create the `.env` file at root with the following variables:
+```
+DATABASE_URL=postgresql://postgres:postgres@localhost:54322/postgres
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_secret_generated_string
+GOOGLE_CLIENT_ID=read_https://next-auth.js.org/providers/google
+GOOGLE_CLIENT_SECRET=read_https://next-auth.js.org/providers/google
+GITHUB_ID=read_https://next-auth.js.org/providers/github
+GITHUB_SECRET=read_https://next-auth.js.org/providers/github
+```
+
+4. Start PostgreSQL database with Docker Compose.
+```sh
+docker compose up -d
+```
+
+5. Generate Prisma types and push schemas to DB.
+```sh
+npx prisma generate
+npx prisma db push
+```
+
+6. Run devlopment mode
+```sh
+npm dev
+```
 
 ## Inspiration
 * [dev.to](https://dev.to)
 * [reddit.com](https://www.reddit.com/)
 * [Breadit by joschan21](https://github.com/joschan21/breadit)
-
----
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, create the .env file at root with the following variables:
-```yaml
-DATABASE_URL=
-NEXTAUTH_URL=
-NEXTAUTH_SECRET=
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-GITHUB_ID=
-GITHUB_SECRET=
-```
-
-Then, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
