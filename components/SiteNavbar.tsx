@@ -14,7 +14,7 @@ export async function SiteNavbar() {
   const session = await getAuthSession()
 
   return (
-    <header className="sticky top-0 z-10 border-b border-b-border/10 bg-background/50 backdrop-blur-md">
+    <header className="sticky top-0 z-10 border-b border-b-border bg-white dark:bg-zinc-900">
       <div className="container flex items-center justify-between py-4">
         {/* SideNav when mobile */}
         <div className="flex items-center gap-3">
@@ -39,12 +39,12 @@ export async function SiteNavbar() {
           </Link>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
 
           {session ? (
             <>
-              <Link className={buttonVariants({ size: "sm" })} href="/new">
+              <Link className={buttonVariants({variant: "outline", size: "sm" })} href="/new">
                 Create Post
               </Link>
               <UserNav user={session.user} />

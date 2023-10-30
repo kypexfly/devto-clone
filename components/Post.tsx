@@ -23,7 +23,7 @@ export function Post({ post, commentAmt, showCover, bookmarked }: PostProps) {
   const { username } = author
 
   return (
-    <Card className="mb-2 max-w-3xl overflow-hidden rounded-none border-0 bg-white shadow-none dark:bg-zinc-900 md:rounded-lg">
+    <Card className="mb-2 max-w-3xl overflow-hidden rounded-none border bg-white shadow-none dark:bg-zinc-900 md:rounded-lg">
       {showCover && (
         <div className="cover">
           <Link href={`/${username}/${id}`}>
