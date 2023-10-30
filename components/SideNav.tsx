@@ -1,8 +1,7 @@
-import Link from "next/link"
-
 import { cn } from "@/lib/utils"
 
 import { Icons } from "./Icons"
+import { NavLink } from "./NavLink"
 import { buttonVariants } from "./ui/Button"
 
 // TODO: Add a real links to the side nav
@@ -29,7 +28,7 @@ export function SideNav({ className, ...props }: SideNavProps) {
         <ul className="flex flex-col">
           {sideOptions.map((option) => (
             <li key={option.label}>
-              <Link
+              <NavLink
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
                   "w-full justify-start py-6"
@@ -38,7 +37,7 @@ export function SideNav({ className, ...props }: SideNavProps) {
               >
                 <option.icon className="mr-2 h-4 w-4" />
                 {option.label}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

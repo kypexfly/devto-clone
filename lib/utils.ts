@@ -79,3 +79,15 @@ export function partiallyShowEmail(
 
   return `${visibleUsername}${maskedUsername}@${domain}`
 }
+
+export function isCurrentPathOrChild(currentPath: string, targetPath: string): boolean {
+  if (targetPath === currentPath) {
+    return true;
+  }
+
+  if (currentPath.startsWith(targetPath + "/")) {
+    return true;
+  }
+
+  return false;
+}
