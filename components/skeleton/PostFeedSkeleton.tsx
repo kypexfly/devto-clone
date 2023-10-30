@@ -1,7 +1,7 @@
-import { AspectRatio } from "@/components/ui/aspect-ratio"
+import { AspectRatio } from "@/components/ui/AspectRatio"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 
-import { Skeleton } from "../ui/skeleton"
+import { Skeleton } from "../ui/Skeleton"
 
 export function PostFeedSkeleton() {
   return Array(5)

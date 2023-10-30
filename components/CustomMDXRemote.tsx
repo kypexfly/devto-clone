@@ -1,6 +1,6 @@
 import { MDXComponents } from "mdx/types"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc"
-import rehypeHighlight from "rehype-highlight/lib"
+import rehypeHighlight from "rehype-highlight"
 import remarkGfm from "remark-gfm"
 
 import { cn } from "@/lib/utils"

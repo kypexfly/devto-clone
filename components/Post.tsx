@@ -7,7 +7,7 @@ import { DEFAULT_POST_COVER } from "@/config/post"
 import { BookmarkButton } from "./BookmarkButton"
 import { PostAuthor } from "./PostAuthor"
 import { Tag } from "./Tag"
-import { AspectRatio } from "./ui/aspect-ratio"
+import { AspectRatio } from "./ui/AspectRatio"
 import { buttonVariants } from "./ui/Button"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/Card"
 

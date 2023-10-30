@@ -14,7 +14,7 @@ import { PostCreateValidator, PostCreationRequest } from "@/lib/validators/post"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/Separator"
 
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false })
 
