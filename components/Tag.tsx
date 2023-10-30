@@ -1,4 +1,4 @@
-import { Badge, BadgeProps } from "./ui/badge"
+import { Badge, BadgeProps } from "./ui/Badge"
 
 export function Tag({ children, ...props }: BadgeProps) {
   return (
