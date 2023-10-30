@@ -2,7 +2,7 @@ import { siteConfig } from "@/config/site"
 
 import "@/styles/globals.css"
 
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 
 import { Toaster } from "@/components/ui/Toaster"
@@ -16,13 +16,16 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  icons: {
+    icon: "/icon.svg",
+  },
+}
+
+export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
-  icons: {
-    icon: "/icon.svg",
-  },
 }
 
 const inter = Inter({ subsets: ["latin"] })
