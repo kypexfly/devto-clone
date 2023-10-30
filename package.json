@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "postinstall": "prisma generate",
+    "db:start": "docker compose up -d", 
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
