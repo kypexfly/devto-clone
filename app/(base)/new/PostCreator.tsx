@@ -4,12 +4,12 @@ import dynamic from "next/dynamic"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
-import axios from "axios"
 import { useTheme } from "next-themes"
 import { Controller, useForm } from "react-hook-form"
 import { TagsInput } from "react-tag-input-component"
 import { z } from "zod"
 
+import { serviceCreatePost } from "@/lib/api/posts/posts"
 import { PostCreateValidator, PostCreationRequest } from "@/lib/validators/post"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
@@ -17,11 +17,6 @@ import { Input } from "@/components/ui/Input"
 import { Separator } from "@/components/ui/Separator"
 
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false })
-
-type CreatePostResponse = {
-  username: string
-  postId: string
-}
 
 export function PostCreator() {
   const { theme } = useTheme()
@@ -41,10 +36,7 @@ export function PostCreator() {
         content,
       })
 
-      const { data } = await axios.post<CreatePostResponse>(
-        "/api/post",
-        payload
-      )
+      const { data } = await serviceCreatePost(payload)
 
       return data
     },

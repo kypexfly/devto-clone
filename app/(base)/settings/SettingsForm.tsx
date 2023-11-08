@@ -3,10 +3,11 @@
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
-import axios, { AxiosError } from "axios"
+import { AxiosError } from "axios"
 import { useForm } from "react-hook-form"
 
 import { ExtendedUserPayload } from "@/types/settings"
+import { serviceUpdateSettings } from "@/lib/api/settings/settings"
 import {
   SettingsUpdateValidator,
   SettingUpdateRequest,
@@ -44,7 +45,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
   const { mutate: updateSettings, isLoading } = useMutation({
     mutationFn: async (formData: SettingUpdateRequest) => {
       const payload = SettingsUpdateValidator.parse(formData)
-      const { data } = await axios.patch("/api/settings", payload)
+      const { data } = await serviceUpdateSettings(payload)
 
       return data
     },

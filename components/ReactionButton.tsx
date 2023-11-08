@@ -2,8 +2,9 @@
 
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
-import axios, { AxiosError } from "axios"
+import { AxiosError } from "axios"
 
+import { serviceUpdateReaction } from "@/lib/api/reactions/reactions"
 import { cn } from "@/lib/utils"
 import { ReactionRequest, ReactionValidator } from "@/lib/validators/reaction"
 import { useCustomToast } from "@/hooks/use-custom-toast"
@@ -36,7 +37,7 @@ export function ReactionButton({
   const { mutate: updateReaction } = useMutation({
     mutationFn: async ({ postId }: ReactionRequest) => {
       const payload = ReactionValidator.parse({ postId })
-      const { data } = await axios.put("/api/post/reaction", payload)
+      const { data } = await serviceUpdateReaction(payload)
       return data as ReactionResponse
     },
     onSuccess: (data) => {

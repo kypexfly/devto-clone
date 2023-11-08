@@ -2,8 +2,9 @@
 
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
-import axios, { AxiosError } from "axios"
+import { AxiosError } from "axios"
 
+import { serviceUpdateBookmark } from "@/lib/api/bookmarks/bookmarks"
 import { cn } from "@/lib/utils"
 import { BookmarkRequest, BookmarkValidator } from "@/lib/validators/bookmark"
 import { useCustomToast } from "@/hooks/use-custom-toast"
@@ -31,7 +32,7 @@ export function BookmarkButton({
   const { mutate: updateBookmark } = useMutation({
     mutationFn: async ({ postId }: BookmarkRequest) => {
       const payload = BookmarkValidator.parse({ postId })
-      const { data } = await axios.put("/api/post/bookmark", payload)
+      const { data } = await serviceUpdateBookmark(payload)
       return data as string
     },
     onSuccess: (data) => {

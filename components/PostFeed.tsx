@@ -3,10 +3,10 @@
 import { useEffect, useRef } from "react"
 import { useIntersection } from "@mantine/hooks"
 import { useInfiniteQuery } from "@tanstack/react-query"
-import axios from "axios"
 
 import { PostPayload } from "@/types/post"
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/post"
+import { serviceGetPosts } from "@/lib/api/posts/posts"
 
 import { Post } from "./Post"
 
@@ -25,9 +25,12 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
   const { data, fetchNextPage } = useInfiniteQuery(
     ["infinite-query"],
     async ({ pageParam = 1 }) => {
-      const query = `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}`
+      const params = new URLSearchParams({
+        limit: `${INFINITE_SCROLL_PAGINATION_RESULTS}`,
+        page: `${pageParam}`,
+      })
 
-      const { data } = await axios.get<PostPayload[]>(query)
+      const { data } = await serviceGetPosts(params.toString())
       return data
     },
 
