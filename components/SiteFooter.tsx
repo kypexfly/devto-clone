@@ -29,7 +29,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-t-border bg-white dark:bg-zinc-900">
       <div className="container pt-10">
-        <div className="grid grid-cols-2 gap-8 px-4 py-6 md:grid-cols-4 lg:py-8">
+        <div className="grid grid-cols-2 gap-8 py-6 md:grid-cols-4 lg:py-8">
           <div>
             <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">
               Company

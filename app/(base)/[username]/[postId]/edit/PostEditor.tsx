@@ -4,12 +4,12 @@ import dynamic from "next/dynamic"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
-import axios from "axios"
 import { useTheme } from "next-themes"
 import { Controller, useForm } from "react-hook-form"
 import { TagsInput } from "react-tag-input-component"
 import { z } from "zod"
 
+import { serviceUpdatePost } from "@/lib/api/posts/posts"
 import {
   PostCreateValidator,
   PostCreationRequest,
@@ -21,11 +21,6 @@ import { Input } from "@/components/ui/Input"
 import { Separator } from "@/components/ui/Separator"
 
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false })
-
-type CreatePostResponse = {
-  username: string
-  postId: string
-}
 
 interface PostEditorProps {
   initialValues?: PostCreationRequest
@@ -57,10 +52,7 @@ export function PostEditor({
         authorId,
       })
 
-      const { data } = await axios.patch<CreatePostResponse>(
-        "/api/post",
-        payload
-      )
+      const { data } = await serviceUpdatePost(postId, payload)
 
       return data
     },

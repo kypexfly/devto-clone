@@ -2,6 +2,7 @@ import { z } from "zod"
 
 import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
+import { PostCreateValidator } from "@/lib/validators/post"
 
 export async function GET(req: Request) {
   try {
@@ -38,7 +39,7 @@ export async function GET(req: Request) {
         _count: {
           select: {
             reactions: true,
-          }
+          },
         },
       },
       where: whereClause,
@@ -47,5 +48,51 @@ export async function GET(req: Request) {
     return new Response(JSON.stringify(posts))
   } catch (error) {
     return new Response("Could not fetch posts", { status: 500 })
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json()
+
+    const session = await getAuthSession()
+    const { title, cover, tags, content } = PostCreateValidator.parse(body)
+
+    if (!session) {
+      return new Response("Unauthorized", { status: 401 })
+    }
+
+    const post = await db.post.create({
+      data: {
+        title,
+        cover,
+        content,
+        tags: {
+          connectOrCreate: tags.map((tagName) => ({
+            where: { name: tagName.trim() },
+            create: { name: tagName.trim() },
+          })),
+        },
+        authorId: session.user.id,
+      },
+      include: {
+        author: true,
+      },
+    })
+
+    return new Response(
+      JSON.stringify({
+        username: post.author.username,
+        postId: post.id,
+      })
+    )
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return new Response(err.message, { status: 400 })
+    }
+
+    return new Response(JSON.stringify(err), {
+      status: 500,
+    })
   }
 }

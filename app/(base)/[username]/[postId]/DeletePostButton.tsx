@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
-import axios from "axios"
 import { z } from "zod"
 
+import { serviceDeletePost } from "@/lib/api/posts/posts"
 import { PostDeleteRequest, PostDeleteValidator } from "@/lib/validators/post"
 import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
@@ -19,7 +19,7 @@ export function DeletePostButton({ postId }: DeletePostButtonProps) {
   const { mutate: deletePost, isLoading } = useMutation({
     mutationFn: async (postId: PostDeleteRequest) => {
       const payload = PostDeleteValidator.parse(postId)
-      await axios.delete(`/api/post?id=${payload.postId}`)
+      await serviceDeletePost(payload.postId)
     },
     onError: (error) => {
       if (error instanceof z.ZodError) {

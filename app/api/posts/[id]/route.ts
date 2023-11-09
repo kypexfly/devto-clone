@@ -2,67 +2,22 @@ import { z } from "zod"
 
 import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
-import {
-  PostCreateValidator,
-  PostDeleteValidator,
-  PostUpdateValidator,
-} from "@/lib/validators/post"
+import { PostDeleteValidator, PostUpdateValidator } from "@/lib/validators/post"
 
-// Create a post
-export async function POST(req: Request) {
-  try {
-    const body = await req.json()
-
-    const session = await getAuthSession()
-    const { title, cover, tags, content } = PostCreateValidator.parse(body)
-
-    if (!session) {
-      return new Response("Unauthorized", { status: 401 })
-    }
-
-    const post = await db.post.create({
-      data: {
-        title,
-        cover,
-        content,
-        tags: {
-          connectOrCreate: tags.map((tagName) => ({
-            where: { name: tagName.trim() },
-            create: { name: tagName.trim() },
-          })),
-        },
-        authorId: session.user.id,
-      },
-      include: {
-        author: true,
-      },
-    })
-
-    return new Response(
-      JSON.stringify({
-        username: post.author.username,
-        postId: post.id,
-      })
-    )
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return new Response(err.message, { status: 400 })
-    }
-
-    return new Response(JSON.stringify(err), {
-      status: 500,
-    })
-  }
+type Params = {
+  params: { id: string }
 }
 
-// Update a post
-export async function PATCH(req: Request) {
+export async function PATCH(req: Request, { params }: Params) {
+  const postId = params.id
+
   try {
     const body = await req.json()
     const session = await getAuthSession()
 
-    const { title, cover, tags, content, postId, authorId } =
-      PostUpdateValidator.parse(body)
+    const { title, cover, tags, content, authorId } = PostUpdateValidator.parse(
+      { ...body, postId }
+    )
 
     if (session?.user.id != authorId) {
       return new Response("Unauthorized", { status: 401 })
@@ -106,11 +61,9 @@ export async function PATCH(req: Request) {
   }
 }
 
-// Delete a post
-export async function DELETE(req: Request) {
+export async function DELETE(_req: Request, { params }: Params) {
   try {
-    const { searchParams } = new URL(req.url)
-    const id = searchParams.get("id")
+    const id = params.id
 
     const { postId } = PostDeleteValidator.parse({ postId: id })
     const session = await getAuthSession()

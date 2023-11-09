@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
 import axios, { AxiosError } from "axios"
 
+import { serviceCreateComment } from "@/lib/api/comments/comments"
 import { CommentRequest, CommentValidator } from "@/lib/validators/comment"
 import { useCustomToast } from "@/hooks/use-custom-toast"
 import { toast } from "@/hooks/use-toast"
@@ -24,7 +25,7 @@ export function CommentCreator({ postId }: { postId: string }) {
   const { mutate: createComment, isLoading } = useMutation({
     mutationFn: async ({ postId, content }: CommentRequest) => {
       const payload = CommentValidator.parse({ postId, content })
-      const { data } = await axios.post("/api/posts/comment", payload)
+      const { data } = await serviceCreateComment(payload)
       return data
     },
 
