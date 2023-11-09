@@ -109,7 +109,7 @@ export default async function UserPage({ params }: UserPageProps) {
       <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-3xl font-bold tracking-tight lg:text-4xl">
         {`All posts by @${user.username}`}
       </h1>
-      <ul>
+      <ul className="space-y-2">
         {user.posts.map((post, index) => (
           <li key={index}>
             <Post

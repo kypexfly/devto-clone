@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
-import axios, { AxiosError } from "axios"
+import { AxiosError } from "axios"
 
 import { serviceCreateComment } from "@/lib/api/comments/comments"
 import { CommentRequest, CommentValidator } from "@/lib/validators/comment"
@@ -54,8 +54,8 @@ export function CommentCreator({ postId }: { postId: string }) {
       <Textarea
         value={content}
         onChange={handleOnChange}
-        className="p-4"
-        placeholder="Type your comment here..."
+        className="min-h-[8rem] bg-transparent p-4"
+        placeholder="What are your thoughts?"
       />
       <div className="my-3 flex justify-end">
         <Button

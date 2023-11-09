@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import { Icons } from "../Icons"
 
 const buttonVariants = cva(
-  "transform active:scale-90 transition-transform inline-flex items-center justify-center rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -26,10 +26,15 @@ const buttonVariants = cva(
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
       },
+      animate: {
+        none: "",
+        pushable: "transform active:scale-90 transition-transform",
+      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      animate: "none",
     },
   }
 )
@@ -43,12 +48,12 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, children, variant, disabled, isLoading, size, ...props },
+    { className, children, variant, disabled, isLoading, size, animate, ...props },
     ref
   ) => {
     return (
       <button
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, className, animate }))}
         ref={ref}
         disabled={disabled || isLoading}
         {...props}

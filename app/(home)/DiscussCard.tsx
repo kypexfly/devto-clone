@@ -28,21 +28,21 @@ export async function DiscussCard() {
   })
 
   return (
-    <Card className="rounded-lg border-0 bg-white shadow-none dark:bg-zinc-900">
+    <Card className="rounded-lg border-0 bg-transparent shadow-none">
       <CardHeader>
         <h2 className="text-xl font-semibold">#discuss</h2>
       </CardHeader>
-      <ul className="text-sm [&_a]:block [&_a]:px-6 [&_a]:py-3">
+      <ul className="space-y-2 text-sm [&_a]:block [&_a]:px-6 [&_a]:py-2">
         {posts.length === 0 && (
-          <li className="border-t px-6 py-3">
+          <li className="px-6 py-3">
             <span className="text-base">No posts yet</span>
           </li>
         )}
         {posts.map((post) => (
-          <li key={post.id} className="border-t">
-            <Link href={`/${post.author.username}/${post.id}`}>
+          <li key={post.id}>
+            <Link className="border-l-4 hover:bg-accent hover:text-accent-foreground" href={`/${post.author.username}/${post.id}`}>
               <span className="text-base">{post.title}</span>
-              <div className="">{post._count.comments} comments</div>
+              <div>{post._count.comments} comments</div>
             </Link>
           </li>
         ))}

@@ -34,6 +34,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
 
   const form = useForm<SettingUpdateRequest>({
     resolver: zodResolver(SettingsUpdateValidator),
+    mode: "onBlur",
     defaultValues: {
       username: user.username ?? undefined,
       website: user.details?.website ?? undefined,
@@ -82,9 +83,9 @@ export function SettingsForm({ user }: SettingsFormProps) {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="!m-0 space-y-2">
         <div className="rounded-none bg-white p-8 text-card-foreground dark:bg-zinc-900 md:rounded-lg">
-          <h1 className="mb-3 scroll-m-20 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
             User
-          </h1>
+          </h2>
 
           <FormField
             control={form.control}
@@ -93,7 +94,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input placeholder="new username..." {...field} />
+                  <Input placeholder="Your username" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -102,9 +103,9 @@ export function SettingsForm({ user }: SettingsFormProps) {
         </div>
 
         <div className="space-y-2 rounded-none bg-white p-8 text-card-foreground dark:bg-zinc-900 md:rounded-lg">
-          <h1 className="mb-3 scroll-m-20 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
             Basic
-          </h1>
+          </h2>
 
           <FormField
             control={form.control}
@@ -113,7 +114,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
               <FormItem>
                 <FormLabel>Website URL</FormLabel>
                 <FormControl>
-                  <Input placeholder="https://youtube.com" {...field} />
+                  <Input placeholder="https://mywebsite.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -127,7 +128,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
               <FormItem>
                 <FormLabel>Location</FormLabel>
                 <FormControl>
-                  <Input placeholder="Miami, USA" {...field} />
+                  <Input placeholder="State, Country" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -142,7 +143,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
                 <FormLabel>Bio</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="A short bio..."
+                    placeholder="A short description about me"
                     {...field}
                   />
                 </FormControl>

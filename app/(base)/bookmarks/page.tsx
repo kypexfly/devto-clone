@@ -58,7 +58,7 @@ export default async function BookmarksPage() {
       <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-3xl font-bold tracking-tight lg:text-4xl">
         <Icons.bookmark size={36} className="inline-block" /> My Bookmarks
       </h1>
-      <ul>
+      <ul className="space-y-2">
         {bookmarks.map((bkm, index) => (
           <li key={index}>
             <Post

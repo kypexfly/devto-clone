@@ -18,7 +18,7 @@ export function Comment({ comment }: CommentProps) {
       <Link href={`/${comment.user.username}`}>
         <UserAvatar user={user} />
       </Link>
-      <div className="flex-1 rounded border px-2 py-4">
+      <div className="flex-1">
         <div>
           <Link href={`/${user.username}`}>@{user.username}</Link> 
           {" "} • {" "}

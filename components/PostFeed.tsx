@@ -51,7 +51,7 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
   const posts = data?.pages.flatMap((page) => page) ?? initialPosts
 
   return (
-    <ul>
+    <ul className="space-y-2">
       {posts.map((post, index) => {
         // Check if first post
         if (index === 0) {

@@ -26,7 +26,7 @@ export async function CommentSection({ postId }: CommentSectionProps) {
         {`Comments (${comments.length})`}
       </h2>
       <CommentCreator postId={postId} />
-      <ul className="space-y-3">
+      <ul className="space-y-6">
         {comments.map((comment, index) => (
           <li key={index}>
             <Comment comment={comment} />
