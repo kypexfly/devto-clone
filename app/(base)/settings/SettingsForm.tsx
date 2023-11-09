@@ -142,7 +142,6 @@ export function SettingsForm({ user }: SettingsFormProps) {
                 <FormLabel>Bio</FormLabel>
                 <FormControl>
                   <Textarea
-                    className="bg-white dark:bg-black"
                     placeholder="A short bio..."
                     {...field}
                   />
