@@ -7,7 +7,18 @@ import { z } from "zod"
 import { serviceDeletePost } from "@/lib/api/posts/posts"
 import { PostDeleteRequest, PostDeleteValidator } from "@/lib/validators/post"
 import { toast } from "@/hooks/use-toast"
-import { Button } from "@/components/ui/Button"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/AlertDialog"
+import { Button, buttonVariants } from "@/components/ui/Button"
 import { Icons } from "@/components/Icons"
 
 interface DeletePostButtonProps {
@@ -44,14 +55,30 @@ export function DeletePostButton({ postId }: DeletePostButtonProps) {
   })
 
   return (
-    <Button
-      onClick={() => deletePost({ postId })}
-      isLoading={isLoading}
-      variant="destructive"
-      size="sm"
-    >
-      <Icons.close className="mr-2 inline" size={14} />
-      Delete
-    </Button>
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button isLoading={isLoading} variant="secondary" size="sm">
+          <Icons.delete className="mr-2 inline" size={14} />
+          Delete
+        </Button>
+      </AlertDialogTrigger>
+
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            post.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            className={buttonVariants({ variant: "destructive" })}
+            onClick={() => deletePost({ postId })}
+          >Delete</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   )
 }

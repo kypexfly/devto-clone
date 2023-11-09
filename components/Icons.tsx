@@ -5,6 +5,7 @@ import {
   Edit,
   Globe,
   Heart,
+  Home,
   Loader2,
   LucideProps,
   MapPin,
@@ -13,11 +14,11 @@ import {
   Moon,
   SunMedium,
   Tag,
+  Trash,
   Twitter,
   User,
   X,
-  type Icon as LucideIcon,
-  Home,
+  type LucideIcon,
 } from "lucide-react"
 
 export type Icon = LucideIcon
@@ -39,6 +40,7 @@ export const Icons = {
   map: MapPin,
   tag: Tag,
   twitter: Twitter,
+  delete: Trash,
   github: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
