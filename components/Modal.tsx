@@ -17,7 +17,7 @@ export default function Modal({ children }: ModalProps) {
 
   return (
     <Dialog open={true} onOpenChange={onDismiss}>
-      <DialogContent className="max-w-sm p-2">{children}</DialogContent>
+      <DialogContent className="max-w-sm bg-card">{children}</DialogContent>
     </Dialog>
   )
 }
