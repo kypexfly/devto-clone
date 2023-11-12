@@ -30,9 +30,9 @@ export async function GeneralFeed() {
       author: true,
       _count: {
         select: {
-          reactions: true
-        }
-      }
+          reactions: true,
+        },
+      },
     },
     orderBy: {
       createdAt: "desc",

@@ -26,9 +26,10 @@ export function UserNav({ user }: UserNavProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-6 w-6 rounded-full">
+        <Button variant="ghost" className="relative h-9 w-9 rounded-full p-0">
           <UserAvatar
             user={{ name: user.name || null, image: user.image || null }}
+            className="h-9 w-9"
           />
         </Button>
       </DropdownMenuTrigger>

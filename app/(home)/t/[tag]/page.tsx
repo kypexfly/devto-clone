@@ -60,7 +60,7 @@ export default async function TagsPage({ params }: TagsPageProps) {
       <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-3xl font-bold tracking-tight lg:text-4xl">
         <Icons.tag size={36} className="inline-block" /> #{params.tag}
       </h1>
-      <ul>
+      <ul className="space-y-2">
         {posts.map((post, index) => (
           <li key={index}>
             <Post

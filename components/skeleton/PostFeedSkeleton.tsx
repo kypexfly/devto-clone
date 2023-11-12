@@ -3,14 +3,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 
 import { Skeleton } from "../ui/Skeleton"
 
-export function PostFeedSkeleton() {
-  return Array(5)
+type PostFeedSkeletonProps = {
+  number?: number
+  firstPostCover?: boolean
+}
+
+export function PostFeedSkeleton({
+  number,
+  firstPostCover,
+}: PostFeedSkeletonProps) {
+  return Array(number ?? 5)
     .fill(0)
     .map((p, i) => {
-      if (i === 0) {
-        return <PostSkeleton showCover />
-      }
-
+      if (i === 0 && firstPostCover) return <PostSkeleton showCover />
       return <PostSkeleton />
     })
 }

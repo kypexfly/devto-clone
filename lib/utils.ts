@@ -8,22 +8,22 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 const formatDistanceLocale = {
-  lessThanXSeconds: "{{count}} s",
-  xSeconds: "{{count}} s",
-  halfAMinute: "30s",
-  lessThanXMinutes: "{{count}} m",
-  xMinutes: "{{count}} min",
-  aboutXHours: "{{count}} h",
-  xHours: "{{count}} h",
-  xDays: "{{count}} d",
-  aboutXWeeks: "{{count}} w",
-  xWeeks: "{{count}} w",
+  lessThanXSeconds: "{{count}} seconds",
+  xSeconds: "{{count}} seconds",
+  halfAMinute: "30 seconds",
+  lessThanXMinutes: "{{count}} minutes",
+  xMinutes: "{{count}} minutes",
+  aboutXHours: "{{count}} hours",
+  xHours: "{{count}} hours",
+  xDays: "{{count}} days",
+  aboutXWeeks: "{{count}} weeks",
+  xWeeks: "{{count}} weeks",
   aboutXMonths: "{{count}} months",
   xMonths: "{{count}} months",
-  aboutXYears: "{{count}} y",
-  xYears: "{{count}} y",
-  overXYears: "{{count}} y",
-  almostXYears: "{{count}} y",
+  aboutXYears: "{{count}} year",
+  xYears: "{{count}} year",
+  overXYears: "{{count}} year",
+  almostXYears: "{{count}} year",
 }
 
 function formatDistance(token: string, count: number, options?: any): string {
@@ -80,14 +80,21 @@ export function partiallyShowEmail(
   return `${visibleUsername}${maskedUsername}@${domain}`
 }
 
-export function isCurrentPathOrChild(currentPath: string, targetPath: string): boolean {
+export function isCurrentPathOrChild(
+  currentPath: string,
+  targetPath: string
+): boolean {
   if (targetPath === currentPath) {
-    return true;
+    return true
   }
 
   if (currentPath.startsWith(targetPath + "/")) {
-    return true;
+    return true
   }
 
-  return false;
+  return false
+}
+
+export async function delayServer(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
 }

@@ -24,7 +24,7 @@ interface SideNavProps extends React.HTMLAttributes<HTMLBaseElement> {}
 export function SideNav({ className, ...props }: SideNavProps) {
   return (
     <aside className={cn(className)} {...props}>
-      <nav className="sticky top-20">
+      <nav className="sticky top-20 pt-4">
         <ul className="flex flex-col">
           {sideOptions.map((option) => (
             <li key={option.label}>

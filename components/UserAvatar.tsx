@@ -9,11 +9,11 @@ interface UserAvatarProps extends AvatarProps {
   user: Pick<User, "image" | "name">
 }
 
-export function UserAvatar({ user, ...props }: UserAvatarProps) {
+export function UserAvatar({ user, className, ...props }: UserAvatarProps) {
   return (
-    <Avatar {...props}>
+    <Avatar {...props} className={className}>
       {user.image ? (
-        <div className="relative aspect-square h-full w-full">
+        <div className="relative aspect-square">
           <Image
             fill
             src={user.image}

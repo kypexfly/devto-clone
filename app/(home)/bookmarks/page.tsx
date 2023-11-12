@@ -1,9 +1,11 @@
+import { Suspense } from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { getAuthSession } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { Icons } from "@/components/Icons"
+import { CircleLoader } from "@/components/Loaders"
 import { Post } from "@/components/Post"
 
 export const metadata: Metadata = {
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
   description: "Your saved posts",
 }
 
-export default async function BookmarksPage() {
+const BookmarkList = async () => {
   const session = await getAuthSession()
 
   if (!session?.user) return notFound()
@@ -45,21 +47,18 @@ export default async function BookmarksPage() {
           bookmarks: bookmark,
           _count: {
             select: {
-              reactions: true
-            }
-          }
+              reactions: true,
+            },
+          },
         },
       },
     },
   })
 
   return (
-    <div className="mx-auto w-full max-w-screen-md">
-      <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-3xl font-bold tracking-tight lg:text-4xl">
-        <Icons.bookmark size={36} className="inline-block" /> My Bookmarks
-      </h1>
-      <ul className="space-y-2">
-        {bookmarks.map((bkm, index) => (
+    <>
+      {bookmarks.length > 0 ? (
+        bookmarks.map((bkm, index) => (
           <li key={index}>
             <Post
               commentAmt={bkm.post.comments.length}
@@ -67,9 +66,27 @@ export default async function BookmarksPage() {
               bookmarked={!!bkm.post?.bookmarks?.length}
             />
           </li>
-        ))}
+        ))
+      ) : (
+        <li>
+          <p className="px-2 py-4 text-gray-600">No bookmarks found.</p>
+        </li>
+      )}
+    </>
+  )
+}
+
+export default function BookmarksPage() {
+  return (
+    <div className="mx-auto w-full max-w-screen-md">
+      <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-3xl font-bold tracking-tight lg:text-4xl">
+        <Icons.bookmark size={36} className="inline-block" /> My Bookmarks
+      </h1>
+      <ul className="space-y-2">
+        <Suspense fallback={<CircleLoader />}>
+          <BookmarkList />
+        </Suspense>
       </ul>
-      {!bookmarks.length && <p className="px-2 pt-4">No bookmarks yet.</p>}
     </div>
   )
 }

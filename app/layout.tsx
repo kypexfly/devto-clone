@@ -7,7 +7,6 @@ import { Inter } from "next/font/google"
 
 import { Toaster } from "@/components/ui/Toaster"
 import { GlobalProviders } from "@/components/GlobalProviders"
-import { SiteFooter } from "@/components/SiteFooter"
 import { SiteNavbar } from "@/components/SiteNavbar"
 
 export const metadata: Metadata = {
@@ -40,16 +39,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} flex min-h-screen flex-col bg-zinc-100 antialiased dark:bg-background`}
+        className={`${inter.className} flex min-h-screen flex-col bg-zinc-50 antialiased dark:bg-background`}
       >
         <GlobalProviders>
           <SiteNavbar />
           {authModal}
-          <div className="container flex min-h-[75vh] grow flex-col p-0 pb-2 md:px-3 md:py-8">
-            {children}
-          </div>
+
+          {children}
           <Toaster />
-          <SiteFooter />
         </GlobalProviders>
       </body>
     </html>
