@@ -8,6 +8,7 @@ import { PostPayload } from "@/types/post"
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/post"
 import { serviceGetPosts } from "@/lib/api/posts/posts"
 
+import { CircleLoader } from "./Loaders"
 import { Post } from "./Post"
 
 interface PostFeedProps {
@@ -22,7 +23,7 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
     threshold: 1,
   })
 
-  const { data, fetchNextPage } = useInfiniteQuery(
+  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
     ["infinite-query"],
     async ({ pageParam = 1 }) => {
       const params = new URLSearchParams({
@@ -35,8 +36,8 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
     },
 
     {
-      getNextPageParam: (_, pages) => {
-        return pages.length + 1
+      getNextPageParam: (lastPage, pages) => {
+        if (lastPage.length > 0) return pages.length + 1
       },
       initialData: { pages: [initialPosts], pageParams: [1] },
     }
@@ -53,43 +54,22 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
   return (
     <ul className="space-y-2">
       {posts.map((post, index) => {
-        // Check if first post
-        if (index === 0) {
-          return (
-            <li key={post.id}>
-              <Post
-                showCover
-                post={post}
-                commentAmt={post.comments.length}
-                bookmarked={!!post?.bookmarks?.length}
-              />
-            </li>
-          )
-        }
-
-        // Check if last post
-        if (index === posts.length - 1) {
-          return (
-            <li key={post.id} ref={ref}>
-              <Post
-                post={post}
-                commentAmt={post.comments.length}
-                bookmarked={!!post?.bookmarks?.length}
-              />
-            </li>
-          )
-        }
-
         return (
-          <li key={post.id}>
+          <li key={post.id} ref={index === posts.length - 1 ? ref : undefined}>
             <Post
+              showCover={index === 0}
               post={post}
               commentAmt={post.comments.length}
-              bookmarked={!!post?.bookmarks?.length}
+              bookmarked={!!post.bookmarks?.length}
             />
           </li>
         )
       })}
+      {isFetchingNextPage && (
+        <li>
+          <CircleLoader />
+        </li>
+      )}
     </ul>
   )
 }

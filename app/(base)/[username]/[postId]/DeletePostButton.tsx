@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { useMutation } from "@tanstack/react-query"
 import { z } from "zod"
@@ -27,6 +28,16 @@ interface DeletePostButtonProps {
 
 export function DeletePostButton({ postId }: DeletePostButtonProps) {
   const router = useRouter()
+  const timerIdRef = useRef<NodeJS.Timeout>()
+
+  useEffect(() => {
+    return () => {
+      if (timerIdRef.current) {
+        clearTimeout(timerIdRef.current)
+      }
+    }
+  }, [])
+
   const { mutate: deletePost, isLoading } = useMutation({
     mutationFn: async (postId: PostDeleteRequest) => {
       const payload = PostDeleteValidator.parse(postId)
@@ -48,9 +59,11 @@ export function DeletePostButton({ postId }: DeletePostButtonProps) {
     },
     onSuccess: () => {
       toast({
-        description: "Post deleted successfully",
+        description: "Post deleted successfully. Redirecting to home...",
       })
-      router.push("/")
+      timerIdRef.current = setTimeout(() => {
+        router.push("/")
+      }, 5000)
     },
   })
 
@@ -76,7 +89,9 @@ export function DeletePostButton({ postId }: DeletePostButtonProps) {
           <AlertDialogAction
             className={buttonVariants({ variant: "destructive" })}
             onClick={() => deletePost({ postId })}
-          >Delete</AlertDialogAction>
+          >
+            Delete
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
