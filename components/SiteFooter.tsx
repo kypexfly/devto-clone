@@ -27,7 +27,8 @@ const socials = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-t-border bg-white dark:bg-zinc-900">
+    // pb-12 for post bar options in mobile view
+    <footer className="border-t border-t-border bg-white pb-12 dark:bg-zinc-900 sm:pb-0">
       <div className="container pt-10">
         <div className="grid grid-cols-2 gap-8 py-6 md:grid-cols-4 lg:py-8">
           <div>

@@ -10,7 +10,7 @@ interface HomePageProps {}
 export default function HomePage({}: HomePageProps) {
   return (
     <>
-      <h1 className="mb-3 scroll-m-20 px-2 pt-4 text-xl font-semibold tracking-tight">
+      <h1 className="mb-3 scroll-m-20 px-4 pt-4 text-xl font-semibold tracking-tight">
         Latest posts
       </h1>
 

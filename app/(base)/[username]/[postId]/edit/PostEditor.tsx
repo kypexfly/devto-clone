@@ -19,8 +19,12 @@ import { toast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Separator } from "@/components/ui/Separator"
+import { CircleLoader } from "@/components/Loaders"
 
-const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false })
+const MDEditor = dynamic(() => import("@uiw/react-md-editor"), {
+  ssr: false,
+  loading: () => <CircleLoader />,
+})
 
 interface PostEditorProps {
   initialValues?: PostCreationRequest
@@ -103,10 +107,10 @@ export function PostEditor({
       <div className="flex flex-col gap-3 p-4 md:px-12 md:py-8 [&>label]:font-bold">
         <h1 className="font-bold tracking-tight">Edit Post</h1>
         <Input
-          className="h-auto scroll-m-20 border-0 bg-transparent text-4xl font-extrabold tracking-tight shadow-none focus-visible:ring-0 lg:text-5xl"
+          className="h-auto scroll-m-20 border-0 bg-transparent p-0 text-4xl font-extrabold tracking-tight shadow-none focus-visible:ring-0 lg:text-5xl"
           inputMode="text"
           {...register("title", { required: true })}
-          placeholder="Insert title"
+          placeholder="Insert your title"
         />
         {errors.title && (
           <p className="text-sm text-red-500">{errors.title.message}</p>
@@ -132,7 +136,7 @@ export function PostEditor({
         <Input
           inputMode="text"
           {...register("cover")}
-          placeholder="post cover image url..."
+          placeholder="Post cover image URL"
         />
         {errors.cover && (
           <p className="text-sm text-red-500">{errors.cover?.message}</p>
@@ -159,6 +163,9 @@ export function PostEditor({
             )}
           />
         </div>
+        {errors.content && (
+          <p className="text-sm text-red-500">{errors.content?.message}</p>
+        )}
       </div>
 
       <div className="mt-auto flex justify-end gap-3 p-4 md:px-12 md:py-8">

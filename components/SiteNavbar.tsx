@@ -15,7 +15,7 @@ export async function SiteNavbar() {
 
   return (
     <header className="sticky top-0 z-10 border-b border-b-border bg-white dark:bg-zinc-900">
-      <div className="container flex items-center justify-between py-4">
+      <div className="container flex items-center justify-between p-4">
         {/* SideNav when mobile */}
         <div className="flex items-center gap-3">
           <Sheet>

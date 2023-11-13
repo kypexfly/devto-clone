@@ -146,7 +146,7 @@ export default async function PostCreatorPage({
           />
         </div>
       </aside>
-      <div className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-lg lg:col-span-8">
+      <div className="col-span-12 overflow-hidden rounded-none border bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-lg lg:col-span-8">
         {post.cover && (
           <AspectRatio ratio={100 / 42} className="relative">
             <Image
@@ -201,7 +201,7 @@ export default async function PostCreatorPage({
       </div>
 
       <div className="hidden flex-col gap-3 lg:col-span-3 lg:flex">
-        <Card className="w-full border-0 bg-white shadow-none dark:bg-zinc-900">
+        <Card className="w-full bg-white shadow-none dark:bg-zinc-900">
           <CardHeader className="-mt-8 flex items-center">
             <Link href={`/${post.author.username}`}>
               <UserAvatar user={post.author} className="h-16 w-16" />

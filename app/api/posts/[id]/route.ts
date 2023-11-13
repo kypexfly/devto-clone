@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache"
 import { z } from "zod"
 
 import { getAuthSession } from "@/lib/auth"
@@ -43,6 +44,8 @@ export async function PATCH(req: Request, { params }: Params) {
         author: true,
       },
     })
+
+    revalidatePath(`/${session.user.username}/${postId}`)
 
     return new Response(
       JSON.stringify({

@@ -2,7 +2,7 @@ import { z } from "zod"
 
 const coverValidation = z
   .string()
-  .url()
+  .url("URL must be from unsplash.com")
   .refine((value) => {
     try {
       const url = new URL(value)
@@ -16,15 +16,15 @@ const coverValidation = z
 export const PostCreateValidator = z.object({
   title: z.string().min(10).max(80),
   cover: coverValidation,
-  tags: z.array(z.string()).min(1).max(4),
-  content: z.any(),
+  tags: z.array(z.string()).min(1, "Must contain at least one tag").max(4, "Must containt at most four tags"),
+  content: z.string().min(100),
 })
 
 export const PostUpdateValidator = z.object({
   title: z.string().min(10).max(80),
   cover: coverValidation,
-  tags: z.array(z.string()).min(1).max(4),
-  content: z.any(),
+  tags: z.array(z.string()).min(1, "Must contain at least one tag").max(4, "Must containt at most four tags"),
+  content: z.string().min(100),
   postId: z.string(),
   authorId: z.string(),
 })
