@@ -10,6 +10,54 @@ export const metadata: Metadata = {
   title: "Create post",
 }
 
+const PostTips = () => {
+  return (
+    <div className="hidden flex-col gap-3 md:col-span-3 md:flex">
+      <Card className="w-full border-0 bg-white shadow-none dark:bg-zinc-900 md:rounded-lg">
+        <CardHeader>
+          <h2 className="font-bold tracking-tight">How to create a post?</h2>
+        </CardHeader>
+        <CardContent>
+          <strong>Title</strong>
+          <ul className="list-inside list-disc text-sm">
+            <li>Make the title concise but descriptive.</li>
+            <li>Make it catchy to attract attention.</li>
+          </ul>
+          <br />
+
+          <strong>Tags</strong>
+          <ul className="list-inside list-disc text-sm">
+            <li>
+              Include keywords that users might use to search for your post (up
+              to 4 tags).
+            </li>
+          </ul>
+          <br />
+
+          <strong>Cover image URL</strong>
+          <ul className="list-inside list-disc text-sm">
+            <li>
+              The cover image for your post will be displayed using a URL from
+              Unsplash.
+            </li>
+          </ul>
+          <br />
+
+          <strong>Post Formatting</strong>
+          <ul className="list-inside list-disc text-sm">
+            <li>
+              Break up long paragraphs into smaller ones to make the text easier
+              to read.
+            </li>
+            <li>Use headers to organize your content and make it scannable.</li>
+            <li>Use bold and italic formatting to emphasize key points.</li>
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
 export default function CreatePage() {
   return (
     <div className="grid grid-cols-12 gap-3">
@@ -17,17 +65,7 @@ export default function CreatePage() {
       <div className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-9 md:rounded-lg lg:col-span-8">
         <PostCreator />
       </div>
-      <div className="hidden flex-col gap-3 md:col-span-3 md:flex">
-        <Card className="w-full border-0 bg-white shadow-none dark:bg-zinc-900">
-          <CardHeader>Aditional info</CardHeader>
-          <CardContent>
-            <ul className="list-inside list-disc">
-              <li>Title must have between 10 and 80 characters.</li>
-              <li>Tags must be between 1 and 4.</li>
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
+      <PostTips />
     </div>
   )
 }
