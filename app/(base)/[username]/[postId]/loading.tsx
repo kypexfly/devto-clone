@@ -13,7 +13,7 @@ export default function loading() {
           <Skeleton />
         </div>
       </aside>
-      <div className="col-span-12 h-[200vh] overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-lg lg:col-span-8">
+      <div className="col-span-12 h-[200vh] overflow-hidden rounded-none border bg-white text-card-foreground dark:bg-zinc-900 md:col-span-11 md:rounded-lg lg:col-span-8">
         <AspectRatio ratio={100 / 42} className="relative">
           <Skeleton className="h-full w-full" />
         </AspectRatio>
@@ -27,8 +27,8 @@ export default function loading() {
       </div>
 
       <div className="hidden flex-col gap-3 lg:col-span-3 lg:flex">
-        <Card className="h-64 w-full border-0 bg-white shadow-none dark:bg-zinc-900" />
-        <Card className="h-96 w-full border-0 bg-white shadow-none dark:bg-zinc-900" />
+        <Card className="h-64 w-full bg-white shadow-none dark:bg-zinc-900" />
+        <Card className="h-96 w-full bg-white shadow-none dark:bg-zinc-900" />
       </div>
     </div>
   )

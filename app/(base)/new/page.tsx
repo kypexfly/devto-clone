@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const PostTips = () => {
   return (
     <div className="hidden flex-col gap-3 md:col-span-3 md:flex">
-      <Card className="w-full border-0 bg-white shadow-none dark:bg-zinc-900 md:rounded-lg">
+      <Card className="w-full bg-white shadow-none dark:bg-zinc-900 md:rounded-lg">
         <CardHeader>
           <h2 className="font-bold tracking-tight">How to create a post?</h2>
         </CardHeader>
@@ -62,7 +62,7 @@ export default function CreatePage() {
   return (
     <div className="grid grid-cols-12 gap-3">
       <aside className="hidden lg:col-span-1 lg:block "></aside>
-      <div className="col-span-12 overflow-hidden rounded-none bg-white text-card-foreground dark:bg-zinc-900 md:col-span-9 md:rounded-lg lg:col-span-8">
+      <div className="col-span-12 overflow-hidden rounded-none border bg-white text-card-foreground dark:bg-zinc-900 md:col-span-9 md:rounded-lg lg:col-span-8">
         <PostCreator />
       </div>
       <PostTips />
