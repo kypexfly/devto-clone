@@ -20,7 +20,7 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
 
   const { ref, entry } = useIntersection({
     root: lastPostRef.current,
-    threshold: 1,
+    threshold: 0.5,
   })
 
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
@@ -52,7 +52,7 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
   const posts = data?.pages.flatMap((page) => page) ?? initialPosts
 
   return (
-    <ul className="space-y-2">
+    <ul className="space-y-2 pb-8">
       {posts.map((post, index) => {
         return (
           <li key={post.id} ref={index === posts.length - 1 ? ref : undefined}>
@@ -66,7 +66,7 @@ export default function PostFeed({ initialPosts }: PostFeedProps) {
         )
       })}
       {isFetchingNextPage && (
-        <li>
+        <li className="pt-8">
           <CircleLoader />
         </li>
       )}
